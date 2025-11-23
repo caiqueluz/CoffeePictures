@@ -1,7 +1,7 @@
-package com.example.coffeepictures.apptoolbar.di
+package com.example.coffeepictures.app.apptoolbar.di
 
 import com.example.coffeepictures.app.presentation.AppScreenModel
-import com.example.coffeepictures.apptoolbar.presentation.logic.AppToolbarViewModel
+import com.example.coffeepictures.app.apptoolbar.presentation.logic.AppToolbarViewModel
 import com.example.coffeepictures.core.compositeModule
 import kotlinx.coroutines.flow.StateFlow
 import org.koin.core.module.dsl.viewModel

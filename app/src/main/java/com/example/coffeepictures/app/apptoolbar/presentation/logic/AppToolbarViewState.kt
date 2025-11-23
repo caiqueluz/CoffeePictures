@@ -1,4 +1,4 @@
-package com.example.coffeepictures.apptoolbar.presentation.logic
+package com.example.coffeepictures.app.apptoolbar.presentation.logic
 
 import androidx.annotation.StringRes
 

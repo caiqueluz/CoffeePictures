@@ -7,7 +7,7 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import com.example.coffeepictures.apptoolbar.presentation.view.AppToolbarHost
+import com.example.coffeepictures.app.apptoolbar.presentation.view.AppToolbarHost
 import com.example.coffeepictures.home.presentation.view.HomeHost
 import kotlinx.coroutines.flow.MutableStateFlow
 

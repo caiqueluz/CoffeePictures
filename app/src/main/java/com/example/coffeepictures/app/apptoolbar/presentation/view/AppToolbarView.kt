@@ -1,4 +1,4 @@
-package com.example.coffeepictures.apptoolbar.presentation.view
+package com.example.coffeepictures.app.apptoolbar.presentation.view
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
@@ -16,8 +16,8 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import com.example.coffeepictures.R
-import com.example.coffeepictures.apptoolbar.presentation.logic.AppToolbarActionModel
-import com.example.coffeepictures.apptoolbar.presentation.logic.AppToolbarViewState
+import com.example.coffeepictures.app.apptoolbar.presentation.logic.AppToolbarActionModel
+import com.example.coffeepictures.app.apptoolbar.presentation.logic.AppToolbarViewState
 import com.example.coffeepictures.designsystem.CoffeePicturesPreview
 
 @OptIn(ExperimentalMaterial3Api::class)
