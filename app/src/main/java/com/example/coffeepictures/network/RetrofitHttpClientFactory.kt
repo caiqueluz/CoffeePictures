@@ -2,7 +2,7 @@ package com.example.coffeepictures.network
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
+import kotlin.reflect.KClass
 
 class RetrofitHttpClientFactory(
     private val okHttpClientFactory: OkHttpClientFactory,
@@ -11,8 +11,8 @@ class RetrofitHttpClientFactory(
         createRetrofit()
     }
 
-    fun <HttpClientT> create(): HttpClientT {
-        return retrofit.create()
+    fun <HttpClientT : Any> create(klass: KClass<HttpClientT>): HttpClientT {
+        return retrofit.create(klass.java)
     }
 
     private fun createRetrofit(): Retrofit {
