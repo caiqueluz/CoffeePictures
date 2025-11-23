@@ -1,4 +1,4 @@
-package com.example.coffeepictures.designsystem
+package com.example.coffeepictures.designsystem.component
 
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
@@ -27,7 +27,7 @@ fun DSButton(
 @Preview
 @Composable
 private fun DSButtonPreview() {
-    CoffeePicturesPreview {
+    _root_ide_package_.com.example.coffeepictures.designsystem.CoffeePicturesPreview {
         DSButton(
             text = "DS Button",
             onButtonClicked = {},

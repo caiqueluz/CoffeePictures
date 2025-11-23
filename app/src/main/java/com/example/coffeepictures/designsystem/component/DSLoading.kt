@@ -1,4 +1,4 @@
-package com.example.coffeepictures.designsystem
+package com.example.coffeepictures.designsystem.component
 
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -47,7 +47,7 @@ fun DSLoading(
 @Preview
 @Composable
 private fun DSLoadingPreview() {
-    CoffeePicturesPreview(
+    _root_ide_package_.com.example.coffeepictures.designsystem.CoffeePicturesPreview(
         modifier = Modifier.background(Color.White),
     ) {
         DSLoading(

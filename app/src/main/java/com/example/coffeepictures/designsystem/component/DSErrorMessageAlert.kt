@@ -1,4 +1,4 @@
-package com.example.coffeepictures.designsystem
+package com.example.coffeepictures.designsystem.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -36,7 +36,7 @@ private fun Content(
 ) {
     Column(
         modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(DSSpacing.small),
+        verticalArrangement = Arrangement.spacedBy(_root_ide_package_.com.example.coffeepictures.designsystem.DSSpacing.small),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Icon(
@@ -54,7 +54,7 @@ private fun Content(
 @Preview
 @Composable
 private fun DSErrorMessageAlertPreview() {
-    CoffeePicturesPreview {
+    _root_ide_package_.com.example.coffeepictures.designsystem.CoffeePicturesPreview {
         DSErrorMessageAlert(
             text = "DS Error Message Alert",
         )
