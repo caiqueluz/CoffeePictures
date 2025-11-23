@@ -49,6 +49,7 @@ private val presentationModule =
             HomeViewModel(
                 loadRandomImageTask = get(),
                 addImageToFavoritesTask = get(),
+                feedbackMessagePresenter = get(),
             )
         }
     }

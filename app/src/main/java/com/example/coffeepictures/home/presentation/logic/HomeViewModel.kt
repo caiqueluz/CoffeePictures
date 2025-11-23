@@ -1,7 +1,9 @@
 package com.example.coffeepictures.home.presentation.logic
 
 import androidx.lifecycle.viewModelScope
+import com.example.coffeepictures.R
 import com.example.coffeepictures.core.BasicViewModel
+import com.example.coffeepictures.designsystem.feedbackmessagepresenter.FeedbackMessagePresenter
 import com.example.coffeepictures.home.domain.AddImageToFavoritesTask
 import com.example.coffeepictures.home.domain.LoadRandomImageTask
 import com.example.coffeepictures.home.domain.RandomImageModel
@@ -10,6 +12,7 @@ import kotlinx.coroutines.launch
 class HomeViewModel(
     private val loadRandomImageTask: LoadRandomImageTask,
     private val addImageToFavoritesTask: AddImageToFavoritesTask,
+    private val feedbackMessagePresenter: FeedbackMessagePresenter,
 ) : BasicViewModel<HomeViewState>() {
     private var randomImageModel: RandomImageModel? = null
     private var errorThrowable: Throwable? = null
@@ -62,10 +65,14 @@ class HomeViewModel(
 
             addImageToFavoritesTask.add(imageUrl)
                 .onSuccess {
-                    // TODO - show success feedback.
+                    feedbackMessagePresenter.show(
+                        textResId = R.string.home_add_image_to_favorites_feedback_success_message_text,
+                    )
                 }
                 .onFailure {
-                    // TODO - show error feedback.
+                    feedbackMessagePresenter.show(
+                        textResId = R.string.home_add_image_to_favorites_feedback_error_message_text,
+                    )
                 }
         }
     }
