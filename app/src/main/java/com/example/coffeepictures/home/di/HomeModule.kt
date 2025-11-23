@@ -1,9 +1,12 @@
 package com.example.coffeepictures.home.di
 
 import com.example.coffeepictures.core.compositeModule
+import com.example.coffeepictures.database.database.AppDatabase
+import com.example.coffeepictures.home.data.AddImageToFavoritesTaskImpl
 import com.example.coffeepictures.home.data.LoadRandomImageTaskImpl
 import com.example.coffeepictures.home.data.RandomImagesHttpClient
 import com.example.coffeepictures.home.data.RandomImagesRetrofitClient
+import com.example.coffeepictures.home.domain.AddImageToFavoritesTask
 import com.example.coffeepictures.home.domain.LoadRandomImageTask
 import com.example.coffeepictures.home.presentation.logic.HomeViewModel
 import com.example.coffeepictures.network.RetrofitHttpClientFactory
@@ -30,6 +33,14 @@ private val domainModule =
                 httpClient = get(),
             )
         }
+
+        factory<AddImageToFavoritesTask> {
+            val imagesDao = get<AppDatabase>().imagesDao()
+
+            AddImageToFavoritesTaskImpl(
+                imagesDao = imagesDao,
+            )
+        }
     }
 
 private val presentationModule =
@@ -37,6 +48,7 @@ private val presentationModule =
         viewModel {
             HomeViewModel(
                 loadRandomImageTask = get(),
+                addImageToFavoritesTask = get(),
             )
         }
     }

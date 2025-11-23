@@ -18,4 +18,8 @@ val databaseModule =
                 databaseBuilderFactory = get(),
             )
         }
+
+        single {
+            get<AppDatabaseProvider>().get()
+        }
     }

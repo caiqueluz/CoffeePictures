@@ -2,12 +2,14 @@ package com.example.coffeepictures.home.presentation.logic
 
 import androidx.lifecycle.viewModelScope
 import com.example.coffeepictures.core.BasicViewModel
+import com.example.coffeepictures.home.domain.AddImageToFavoritesTask
 import com.example.coffeepictures.home.domain.LoadRandomImageTask
 import com.example.coffeepictures.home.domain.RandomImageModel
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val loadRandomImageTask: LoadRandomImageTask,
+    private val addImageToFavoritesTask: AddImageToFavoritesTask,
 ) : BasicViewModel<HomeViewState>() {
     private var randomImageModel: RandomImageModel? = null
     private var errorThrowable: Throwable? = null
@@ -36,7 +38,7 @@ class HomeViewModel(
     }
 
     fun onAddToFavoritesButtonClicked() {
-        // TODO.
+        addImageToFavorites()
     }
 
     private fun loadRandomImage() {
@@ -51,6 +53,20 @@ class HomeViewModel(
                 .onFailure { errorThrowable = it }
 
             updateViewState()
+        }
+    }
+
+    private fun addImageToFavorites() {
+        viewModelScope.launch {
+            val imageUrl = requireNotNull(randomImageModel).url
+
+            addImageToFavoritesTask.add(imageUrl)
+                .onSuccess {
+                    // TODO - show success feedback.
+                }
+                .onFailure {
+                    // TODO - show error feedback.
+                }
         }
     }
 }
