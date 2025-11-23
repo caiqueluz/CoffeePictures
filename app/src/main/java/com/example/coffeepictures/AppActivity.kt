@@ -14,7 +14,6 @@ class AppActivity : ComponentActivity() {
         setCoffeePicturesContent {
             App(
                 modifier = Modifier.fillMaxSize(),
-                name = "Android",
             )
         }
     }
