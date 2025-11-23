@@ -1,4 +1,4 @@
-package com.example.coffeepictures.designsystem
+package com.example.coffeepictures.designsystem.core
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

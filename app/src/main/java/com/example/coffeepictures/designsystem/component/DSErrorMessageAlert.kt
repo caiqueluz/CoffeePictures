@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.coffeepictures.designsystem.core.DSSpacing
 
 @Composable
 fun DSErrorMessageAlert(
@@ -36,7 +37,7 @@ private fun Content(
 ) {
     Column(
         modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(_root_ide_package_.com.example.coffeepictures.designsystem.DSSpacing.small),
+        verticalArrangement = Arrangement.spacedBy(DSSpacing.small),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Icon(
