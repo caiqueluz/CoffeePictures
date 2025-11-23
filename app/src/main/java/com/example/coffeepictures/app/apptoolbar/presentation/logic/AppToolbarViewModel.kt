@@ -20,22 +20,37 @@ class AppToolbarViewModel(
                 .appScreenFlow
                 .collect {
                     appScreenModel = it
+                    updateViewState()
                 }
         }
     }
 
     override fun createViewState(): AppToolbarViewState {
-        val titleTextResId =
-            when (appScreenModel) {
-                is Home -> R.string.home_toolbar_title_text
-                is Favorites -> R.string.favorites_toolbar_title_text
-                else -> null
+        return when (appScreenModel) {
+            is Home -> {
+                AppToolbarViewState(
+                    titleTextResId = R.string.home_toolbar_title_text,
+                    actionModels =
+                        listOf(
+                            AppToolbarActionModel.FAVORITES,
+                        ),
+                )
             }
 
-        return AppToolbarViewState(
-            titleTextResId = titleTextResId,
-            actionModels = AppToolbarActionModel.entries,
-        )
+            is Favorites -> {
+                AppToolbarViewState(
+                    titleTextResId = R.string.favorites_toolbar_title_text,
+                    actionModels = emptyList(),
+                )
+            }
+
+            else -> {
+                AppToolbarViewState(
+                    titleTextResId = null,
+                    actionModels = emptyList(),
+                )
+            }
+        }
     }
 
     fun onToolbarActionIconClicked(index: Int) {
