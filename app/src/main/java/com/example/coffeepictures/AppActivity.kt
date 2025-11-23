@@ -4,12 +4,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import coil3.compose.setSingletonImageLoaderFactory
 import com.example.coffeepictures.app.di.appModule
 import com.example.coffeepictures.app.presentation.App
 import com.example.coffeepictures.core.setCoffeePicturesContent
+import com.example.coffeepictures.designsystem.feedbackmessagepresenter.FeedbackMessagePresenter
+import com.example.coffeepictures.designsystem.feedbackmessagepresenter.rememberFeedbackMessagePresenter
 import com.example.coffeepictures.image.CoilImageLoaderFactory
 import org.koin.android.ext.android.get
 import org.koin.android.ext.koin.androidContext
@@ -20,15 +24,36 @@ class AppActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         setCoffeePicturesContent {
+            val snackbarHostState =
+                remember {
+                    SnackbarHostState()
+                }
+
+            val feedbackMessagePresenter = rememberFeedbackMessagePresenter(state = snackbarHostState)
+
             App(
                 modifier = Modifier.fillMaxSize(),
                 koinAppDeclaration = {
                     androidContext(applicationContext)
-                    modules(appModule)
+
+                    modules(
+                        appModule(feedbackMessagePresenter),
+                    )
                 },
                 configureCoil = ::configureCoil,
+                snackbarHostState = snackbarHostState,
             )
         }
+    }
+
+    @Composable
+    private fun rememberFeedbackMessagePresenter(state: SnackbarHostState): FeedbackMessagePresenter {
+        return rememberFeedbackMessagePresenter(
+            state = state,
+            getTextValue = { textResId ->
+                getString(textResId)
+            },
+        )
     }
 
     @Composable
