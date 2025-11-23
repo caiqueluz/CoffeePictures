@@ -64,6 +64,7 @@ dependencies {
     implementation(libs.coil3.network.okHttp)
 
     implementation(libs.okHttp.core)
+    implementation(libs.okHttp.loggingInterceptor)
     implementation(libs.retrofit)
     implementation(libs.retrofit.converter.gson)
 
