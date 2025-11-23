@@ -1,4 +1,4 @@
-package com.example.coffeepictures
+package com.example.coffeepictures.app.presentation
 
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
