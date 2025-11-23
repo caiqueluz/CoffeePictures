@@ -13,7 +13,7 @@ class HomeViewModel(
 
     override fun createViewState(): HomeViewState {
         val imageUrl =
-            if (currentImageUrl != null && errorThrowable != null) {
+            if (currentImageUrl != null && errorThrowable == null) {
                 requireNotNull(currentImageUrl)
             } else {
                 null
