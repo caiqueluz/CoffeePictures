@@ -1,6 +1,6 @@
 package com.example.coffeepictures.home.di
 
-import com.example.coffeepictures.compositeModule
+import com.example.coffeepictures.core.compositeModule
 import com.example.coffeepictures.home.domain.LoadRandomImageTask
 import com.example.coffeepictures.home.domain.LoadRandomImageTaskImpl
 import com.example.coffeepictures.home.presentation.logic.HomeViewModel

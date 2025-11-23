@@ -1,4 +1,4 @@
-package com.example.coffeepictures
+package com.example.coffeepictures.core
 
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent

@@ -1,4 +1,4 @@
-package com.example.coffeepictures
+package com.example.coffeepictures.core
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

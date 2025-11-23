@@ -1,7 +1,7 @@
 package com.example.coffeepictures.home.presentation.logic
 
 import androidx.lifecycle.viewModelScope
-import com.example.coffeepictures.BasicViewModel
+import com.example.coffeepictures.core.BasicViewModel
 import com.example.coffeepictures.home.domain.LoadRandomImageTask
 import kotlinx.coroutines.launch
 
