@@ -19,6 +19,6 @@ class OkHttpClientFactory {
     }
 
     private companion object {
-        val GENERAL_TIMEOUT_DURATION = 30.seconds
+        val GENERAL_TIMEOUT_DURATION = 10.seconds
     }
 }
