@@ -10,7 +10,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import coil3.compose.setSingletonImageLoaderFactory
 import com.example.coffeepictures.app.app.di.appModule
-import com.example.coffeepictures.app.app.presentation.App
+import com.example.coffeepictures.app.App
 import com.example.coffeepictures.core.setCoffeePicturesContent
 import com.example.coffeepictures.designsystem.feedbackmessagepresenter.FeedbackMessagePresenter
 import com.example.coffeepictures.designsystem.feedbackmessagepresenter.rememberFeedbackMessagePresenter

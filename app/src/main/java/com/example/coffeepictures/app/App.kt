@@ -1,8 +1,9 @@
-package com.example.coffeepictures.app.app.presentation
+package com.example.coffeepictures.app
 
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.example.coffeepictures.app.app.presentation.AppHost
 import org.koin.compose.KoinApplication
 import org.koin.dsl.KoinAppDeclaration
 
