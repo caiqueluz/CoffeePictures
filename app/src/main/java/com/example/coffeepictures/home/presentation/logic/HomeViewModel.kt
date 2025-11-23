@@ -1,4 +1,4 @@
-package com.example.coffeepictures.home.logic
+package com.example.coffeepictures.home.presentation.logic
 
 import androidx.lifecycle.viewModelScope
 import com.example.coffeepictures.BasicViewModel

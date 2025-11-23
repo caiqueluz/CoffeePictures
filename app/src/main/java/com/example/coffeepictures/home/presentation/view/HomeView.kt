@@ -1,4 +1,4 @@
-package com.example.coffeepictures.home.view
+package com.example.coffeepictures.home.presentation.view
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -23,7 +23,7 @@ import com.example.coffeepictures.designsystem.component.DSButton
 import com.example.coffeepictures.designsystem.component.DSErrorMessageAlert
 import com.example.coffeepictures.designsystem.component.DSLoading
 import com.example.coffeepictures.designsystem.core.DSSpacing
-import com.example.coffeepictures.home.logic.HomeViewState
+import com.example.coffeepictures.home.presentation.logic.HomeViewState
 
 @Composable
 fun HomeView(
