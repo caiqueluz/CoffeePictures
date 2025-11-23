@@ -45,6 +45,7 @@ android {
 dependencies {
     implementation(platform(libs.androidx.compose.bom))
     implementation(platform(libs.koin.bom))
+    implementation(platform(libs.okHttp.bom))
     androidTestImplementation(platform(libs.androidx.compose.bom))
 
     implementation(libs.androidx.core.ktx)
@@ -61,6 +62,10 @@ dependencies {
 
     implementation(libs.coil3.compose)
     implementation(libs.coil3.network.okHttp)
+
+    implementation(libs.okHttp.core)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

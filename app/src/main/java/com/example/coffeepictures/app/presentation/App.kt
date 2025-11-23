@@ -2,18 +2,20 @@ package com.example.coffeepictures.app.presentation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.coffeepictures.app.di.appModule
 import org.koin.compose.KoinApplication
+import org.koin.dsl.KoinAppDeclaration
 
 @Composable
 fun App(
     modifier: Modifier = Modifier,
+    koinAppDeclaration: KoinAppDeclaration,
+    configureCoil: @Composable () -> Unit,
 ) {
     KoinApplication(
-        application = {
-            modules(appModule)
-        },
+        application = koinAppDeclaration,
     ) {
+        configureCoil()
+
         AppHost(
             modifier = modifier,
         )

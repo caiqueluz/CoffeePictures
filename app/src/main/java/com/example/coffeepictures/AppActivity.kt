@@ -4,9 +4,15 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import coil3.compose.setSingletonImageLoaderFactory
+import com.example.coffeepictures.app.di.appModule
 import com.example.coffeepictures.app.presentation.App
 import com.example.coffeepictures.core.setCoffeePicturesContent
+import com.example.coffeepictures.image.CoilImageLoaderFactory
+import org.koin.android.ext.android.get
+import org.koin.android.ext.koin.androidContext
 
 class AppActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +22,21 @@ class AppActivity : ComponentActivity() {
         setCoffeePicturesContent {
             App(
                 modifier = Modifier.fillMaxSize(),
+                koinAppDeclaration = {
+                    androidContext(applicationContext)
+                    modules(appModule)
+                },
+                configureCoil = ::configureCoil,
             )
+        }
+    }
+
+    @Composable
+    private fun configureCoil() {
+        setSingletonImageLoaderFactory {
+            val coilImageLoaderFactory = get<CoilImageLoaderFactory>()
+
+            coilImageLoaderFactory.create()
         }
     }
 }
