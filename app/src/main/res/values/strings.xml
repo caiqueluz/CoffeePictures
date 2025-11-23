@@ -2,6 +2,9 @@
     <string name="app_name">CoffeePictures</string>
     <string name="feedback_message_presenter_snackbar_dismiss_action_text">Dismiss</string>
 
+    <string name="home_toolbar_title_text">Home</string>
+    <string name="favorites_toolbar_title_text">Favorites</string>
+
     <string name="home_load_new_button_text">Load new</string>
     <string name="home_add_to_favorites_button_text">Add to favorites</string>
     <string name="home_error_text">Could not load the image. Sorry! :(</string>

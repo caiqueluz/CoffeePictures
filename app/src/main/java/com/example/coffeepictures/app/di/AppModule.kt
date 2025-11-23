@@ -1,5 +1,6 @@
 package com.example.coffeepictures.app.di
 
+import com.example.coffeepictures.apptoolbar.di.appToolbarModule
 import com.example.coffeepictures.core.compositeModule
 import com.example.coffeepictures.database.databaseModule
 import com.example.coffeepictures.designsystem.di.designSystemModule
@@ -14,5 +15,6 @@ fun appModule(feedbackMessagePresenter: FeedbackMessagePresenter) =
         databaseModule,
         imageModule,
         networkModule,
+        appToolbarModule,
         homeModule,
     )
