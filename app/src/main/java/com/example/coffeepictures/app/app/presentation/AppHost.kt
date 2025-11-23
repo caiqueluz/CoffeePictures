@@ -1,5 +1,7 @@
 package com.example.coffeepictures.app.app.presentation
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
@@ -35,18 +37,22 @@ fun AppHost(
                 hostState = snackbarHostState,
             )
         },
-    ) {
+    ) { innerPadding ->
         val appScreenModel by appScreenNavigator.appScreenFlow.collectAsStateWithLifecycle()
 
-        when (appScreenModel) {
-            is Home -> {
-                HomeHost()
-            }
+        Box(
+            modifier = Modifier.padding(innerPadding),
+        ) {
+            when (appScreenModel) {
+                is Home -> {
+                    HomeHost()
+                }
 
-            is Favorites -> {
-                FavoritesHost(
-                    appScreenNavigator = appScreenNavigator,
-                )
+                is Favorites -> {
+                    FavoritesHost(
+                        appScreenNavigator = appScreenNavigator,
+                    )
+                }
             }
         }
     }
