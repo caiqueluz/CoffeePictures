@@ -1,10 +1,14 @@
 package com.example.coffeepictures.favorites.presentation.logic
 
+import androidx.lifecycle.viewModelScope
 import com.example.coffeepictures.app.navigator.AppScreenNavigator
 import com.example.coffeepictures.core.BasicViewModel
+import com.example.coffeepictures.favorites.domain.LoadAllFavoriteImagesTask
 import com.example.coffeepictures.home.domain.RandomImageModel
+import kotlinx.coroutines.launch
 
 class FavoritesViewModel(
+    private val loadAllFavoriteImagesTask: LoadAllFavoriteImagesTask,
     private val appScreenNavigator: AppScreenNavigator,
 ) : BasicViewModel<FavoritesViewState>() {
     private var randomImageModels = listOf<RandomImageModel>()
@@ -29,6 +33,10 @@ class FavoritesViewModel(
         )
     }
 
+    fun onFavoritesStarted() {
+        loadAllFavoriteImages()
+    }
+
     fun onBackButtonClicked() {
         appScreenNavigator.navigateBackToHome()
     }
@@ -42,5 +50,20 @@ class FavoritesViewModel(
             titleText = randomImageModel.url,
             url = randomImageModel.url,
         )
+    }
+
+    private fun loadAllFavoriteImages() {
+        randomImageModels = emptyList()
+        errorThrowable = null
+
+        updateViewState()
+
+        viewModelScope.launch {
+            loadAllFavoriteImagesTask.load()
+                .onSuccess { randomImageModels = it }
+                .onFailure { errorThrowable = it }
+
+            updateViewState()
+        }
     }
 }
