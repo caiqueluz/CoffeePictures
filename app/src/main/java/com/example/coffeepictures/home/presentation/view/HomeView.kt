@@ -12,13 +12,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
+import coil3.compose.AsyncImage
 import com.example.coffeepictures.R
 import com.example.coffeepictures.designsystem.CoffeePicturesPreview
+import com.example.coffeepictures.designsystem.CoilPreviewScope
 import com.example.coffeepictures.designsystem.component.DSButton
 import com.example.coffeepictures.designsystem.component.DSErrorMessageAlert
 import com.example.coffeepictures.designsystem.component.DSLoading
@@ -99,10 +103,10 @@ private fun Image(
     modifier: Modifier = Modifier,
     url: String,
 ) {
-    // TODO - show real image.
-
-    Box(
+    AsyncImage(
         modifier = modifier,
+        model = url,
+        contentDescription = null,
     )
 }
 
@@ -149,7 +153,7 @@ private class HomeViewPreviewProvider : PreviewParameterProvider<HomeViewState> 
             HomeViewState(
                 isLoadingVisible = false,
                 isErrorVisible = false,
-                imageUrl = "example.com", // TODO - use real image url.
+                imageUrl = "example.com",
             ),
         )
 }
@@ -159,12 +163,19 @@ private class HomeViewPreviewProvider : PreviewParameterProvider<HomeViewState> 
 private fun HomeViewPreview(
     @PreviewParameter(HomeViewPreviewProvider::class) viewState: HomeViewState,
 ) {
-    CoffeePicturesPreview {
-        HomeView(
-            modifier = Modifier.fillMaxSize(),
-            viewState = viewState,
-            onLoadNewButtonClicked = {},
-            onAddToFavoritesButtonClicked = {},
-        )
+    CoilPreviewScope(
+        colorPreviewMap =
+            mapOf(
+                "example.com" to Color.Blue.toArgb(),
+            ),
+    ) {
+        CoffeePicturesPreview {
+            HomeView(
+                modifier = Modifier.fillMaxSize(),
+                viewState = viewState,
+                onLoadNewButtonClicked = {},
+                onAddToFavoritesButtonClicked = {},
+            )
+        }
     }
 }
