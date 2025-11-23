@@ -29,6 +29,8 @@ class HomeViewModel(
             isLoadingVisible = randomImageModel == null && errorThrowable == null,
             isErrorVisible = randomImageModel == null && errorThrowable != null,
             imageUrl = imageUrl,
+            isLoadNewButtonEnabled = randomImageModel != null || errorThrowable != null,
+            isAddToFavoritesButtonEnabled = randomImageModel != null && errorThrowable == null,
         )
     }
 

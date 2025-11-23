@@ -59,6 +59,8 @@ fun HomeView(
 
         ButtonSection(
             modifier = Modifier.fillMaxWidth(),
+            isLoadNewButtonEnabled = viewState.isLoadNewButtonEnabled,
+            isAddToFavoritesButtonEnabled = viewState.isAddToFavoritesButtonEnabled,
             onLoadNewButtonClicked = onLoadNewButtonClicked,
             onAddToFavoritesButtonClicked = onAddToFavoritesButtonClicked,
         )
@@ -113,6 +115,8 @@ private fun Image(
 @Composable
 private fun ButtonSection(
     modifier: Modifier = Modifier,
+    isLoadNewButtonEnabled: Boolean,
+    isAddToFavoritesButtonEnabled: Boolean,
     onLoadNewButtonClicked: () -> Unit,
     onAddToFavoritesButtonClicked: () -> Unit,
 ) {
@@ -123,14 +127,14 @@ private fun ButtonSection(
         DSButton(
             modifier = Modifier.weight(1F),
             text = stringResource(id = R.string.home_load_new_button_text),
-            isEnabled = true, // TODO - add enabled logic.
+            isEnabled = isLoadNewButtonEnabled,
             onButtonClicked = onLoadNewButtonClicked,
         )
 
         DSButton(
             modifier = Modifier.weight(1F),
             text = stringResource(id = R.string.home_add_to_favorites_button_text),
-            isEnabled = true, // TODO - add enabled logic.
+            isEnabled = isAddToFavoritesButtonEnabled,
             onButtonClicked = onAddToFavoritesButtonClicked,
         )
     }
@@ -144,18 +148,24 @@ private class HomeViewPreviewProvider : PreviewParameterProvider<HomeViewState> 
                 isLoadingVisible = true,
                 isErrorVisible = false,
                 imageUrl = null,
+                isLoadNewButtonEnabled = false,
+                isAddToFavoritesButtonEnabled = false,
             ),
             // Error.
             HomeViewState(
                 isLoadingVisible = false,
                 isErrorVisible = true,
                 imageUrl = null,
+                isLoadNewButtonEnabled = true,
+                isAddToFavoritesButtonEnabled = false,
             ),
             // Success.
             HomeViewState(
                 isLoadingVisible = false,
                 isErrorVisible = false,
                 imageUrl = "example.com",
+                isLoadNewButtonEnabled = true,
+                isAddToFavoritesButtonEnabled = true,
             ),
         )
 }
