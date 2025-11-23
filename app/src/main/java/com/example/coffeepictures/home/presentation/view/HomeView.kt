@@ -123,12 +123,14 @@ private fun ButtonSection(
         DSButton(
             modifier = Modifier.weight(1F),
             text = stringResource(id = R.string.home_load_new_button_text),
+            isEnabled = true, // TODO - add enabled logic.
             onButtonClicked = onLoadNewButtonClicked,
         )
 
         DSButton(
             modifier = Modifier.weight(1F),
             text = stringResource(id = R.string.home_add_to_favorites_button_text),
+            isEnabled = true, // TODO - add enabled logic.
             onButtonClicked = onAddToFavoritesButtonClicked,
         )
     }
