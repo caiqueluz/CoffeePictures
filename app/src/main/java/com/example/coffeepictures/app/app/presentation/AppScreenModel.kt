@@ -1,4 +1,4 @@
-package com.example.coffeepictures.app.presentation
+package com.example.coffeepictures.app.app.presentation
 
 sealed interface AppScreenModel {
     data object Home : AppScreenModel

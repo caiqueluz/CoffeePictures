@@ -1,4 +1,4 @@
-package com.example.coffeepictures.app.di
+package com.example.coffeepictures.app.app.di
 
 import com.example.coffeepictures.app.apptoolbar.di.appToolbarModule
 import com.example.coffeepictures.core.compositeModule

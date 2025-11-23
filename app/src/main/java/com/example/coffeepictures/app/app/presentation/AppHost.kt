@@ -1,4 +1,4 @@
-package com.example.coffeepictures.app.presentation
+package com.example.coffeepictures.app.app.presentation
 
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold

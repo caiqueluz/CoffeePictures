@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.coffeepictures.app.presentation.AppScreenModel
+import com.example.coffeepictures.app.app.presentation.AppScreenModel
 import com.example.coffeepictures.app.apptoolbar.presentation.logic.AppToolbarViewModel
 import kotlinx.coroutines.flow.StateFlow
 import org.koin.androidx.compose.koinViewModel
