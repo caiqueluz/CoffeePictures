@@ -5,20 +5,22 @@ import com.example.coffeepictures.R
 import com.example.coffeepictures.app.app.presentation.AppScreenModel
 import com.example.coffeepictures.app.app.presentation.AppScreenModel.Favorites
 import com.example.coffeepictures.app.app.presentation.AppScreenModel.Home
+import com.example.coffeepictures.app.navigator.AppScreenNavigator
 import com.example.coffeepictures.core.BasicViewModel
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class AppToolbarViewModel(
-    private val appScreenFlow: StateFlow<AppScreenModel>,
+    private val appScreenNavigator: AppScreenNavigator,
 ) : BasicViewModel<AppToolbarViewState>() {
     private var appScreenModel: AppScreenModel? = null
 
     init {
         viewModelScope.launch {
-            appScreenFlow.collect {
-                appScreenModel = it
-            }
+            appScreenNavigator
+                .appScreenFlow
+                .collect {
+                    appScreenModel = it
+                }
         }
     }
 
@@ -41,7 +43,7 @@ class AppToolbarViewModel(
 
         when (model) {
             AppToolbarActionModel.FAVORITES -> {
-                // TODO - show favorites screen.
+                appScreenNavigator.navigateToFavorites()
             }
         }
     }
