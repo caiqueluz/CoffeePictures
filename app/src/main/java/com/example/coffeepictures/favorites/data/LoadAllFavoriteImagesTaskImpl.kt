@@ -12,6 +12,9 @@ class LoadAllFavoriteImagesTaskImpl(
             val imageModels =
                 imagesDao
                     .getAllImages()
+                    .ifEmpty {
+                        throw Throwable("No random images found.")
+                    }
                     .map { entity ->
                         RandomImageModel(url = entity.url)
                     }
