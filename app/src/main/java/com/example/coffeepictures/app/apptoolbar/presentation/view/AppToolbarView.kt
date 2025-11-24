@@ -30,11 +30,9 @@ fun AppToolbarView(
     TopAppBar(
         modifier = modifier,
         title = {
-            viewState.titleTextResId?.let { textResId ->
-                Text(
-                    text = stringResource(id = textResId),
-                )
-            }
+            Text(
+                text = stringResource(id = viewState.titleTextResId),
+            )
         },
         actions = {
             viewState.actionModels.forEachIndexed { index, model ->

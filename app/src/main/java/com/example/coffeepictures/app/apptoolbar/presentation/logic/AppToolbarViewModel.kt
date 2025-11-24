@@ -12,7 +12,10 @@ import kotlinx.coroutines.launch
 class AppToolbarViewModel(
     private val appScreenNavigator: AppScreenNavigator,
 ) : BasicViewModel<AppToolbarViewState>() {
-    private var appScreenModel: AppScreenModel? = null
+    private var appScreenModel: AppScreenModel =
+        appScreenNavigator
+            .appScreenFlow
+            .value
 
     init {
         viewModelScope.launch {
@@ -40,13 +43,6 @@ class AppToolbarViewModel(
             is Favorites -> {
                 AppToolbarViewState(
                     titleTextResId = R.string.favorites_toolbar_title_text,
-                    actionModels = emptyList(),
-                )
-            }
-
-            else -> {
-                AppToolbarViewState(
-                    titleTextResId = null,
                     actionModels = emptyList(),
                 )
             }
