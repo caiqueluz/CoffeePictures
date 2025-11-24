@@ -17,45 +17,57 @@ class AppToolbarViewModel(
             .appScreenFlow
             .value
 
+    private var actionModels = listOf<AppToolbarActionModel>()
+
     init {
+        updateActionModels()
+        updateViewState()
+
         viewModelScope.launch {
             appScreenNavigator
                 .appScreenFlow
                 .collect {
                     appScreenModel = it
+
+                    updateActionModels()
                     updateViewState()
                 }
         }
     }
 
     override fun createViewState(): AppToolbarViewState {
-        return when (appScreenModel) {
-            is Home -> {
-                AppToolbarViewState(
-                    titleTextResId = R.string.home_toolbar_title_text,
-                    actionModels =
-                        listOf(
-                            AppToolbarActionModel.FAVORITES,
-                        ),
-                )
+        val titleTextResId =
+            when (appScreenModel) {
+                is Home -> R.string.home_toolbar_title_text
+                is Favorites -> R.string.favorites_toolbar_title_text
             }
 
-            is Favorites -> {
-                AppToolbarViewState(
-                    titleTextResId = R.string.favorites_toolbar_title_text,
-                    actionModels = emptyList(),
-                )
-            }
-        }
+        return AppToolbarViewState(
+            titleTextResId = titleTextResId,
+            actionModels = actionModels,
+        )
     }
 
     fun onToolbarActionIconClicked(index: Int) {
-        val model = AppToolbarActionModel.entries[index]
+        val model = actionModels[index]
 
         when (model) {
             AppToolbarActionModel.FAVORITES -> {
                 appScreenNavigator.navigateToFavorites()
             }
         }
+    }
+
+    private fun updateActionModels() {
+        actionModels =
+            when (appScreenModel) {
+                is Home -> {
+                    listOf(
+                        AppToolbarActionModel.FAVORITES,
+                    )
+                }
+
+                is Favorites -> emptyList()
+            }
     }
 }
