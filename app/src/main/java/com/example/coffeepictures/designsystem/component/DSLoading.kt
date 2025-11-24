@@ -16,6 +16,7 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.coffeepictures.designsystem.CoffeePicturesPreview
 
 @Composable
 fun DSLoading(
@@ -47,7 +48,7 @@ fun DSLoading(
 @Preview
 @Composable
 private fun DSLoadingPreview() {
-    _root_ide_package_.com.example.coffeepictures.designsystem.CoffeePicturesPreview(
+    CoffeePicturesPreview(
         modifier = Modifier.background(Color.White),
     ) {
         DSLoading(
