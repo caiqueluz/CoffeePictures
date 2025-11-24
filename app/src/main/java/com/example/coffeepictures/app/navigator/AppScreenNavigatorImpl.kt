@@ -7,9 +7,10 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class AppScreenNavigatorImpl(
+    initialModel: AppScreenModel,
     private val coroutineScope: CoroutineScope,
 ) : AppScreenNavigator {
-    private val mutableAppScreenFlow = MutableStateFlow<AppScreenModel>(value = AppScreenModel.Home)
+    private val mutableAppScreenFlow = MutableStateFlow<AppScreenModel>(value = initialModel)
     override val appScreenFlow = mutableAppScreenFlow.asStateFlow()
 
     override fun navigateToFavorites() {

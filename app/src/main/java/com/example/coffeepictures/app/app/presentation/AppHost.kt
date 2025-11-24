@@ -23,7 +23,7 @@ fun AppHost(
     modifier: Modifier = Modifier,
     snackbarHostState: SnackbarHostState,
 ) {
-    val appScreenNavigator = rememberAppScreenNavigator()
+    val appScreenNavigator = rememberAppScreenNavigator(initialModel = Home)
 
     Scaffold(
         modifier = modifier,
