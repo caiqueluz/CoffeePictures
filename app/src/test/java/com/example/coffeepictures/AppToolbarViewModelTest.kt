@@ -6,12 +6,16 @@ import com.example.coffeepictures.app.apptoolbar.presentation.logic.AppToolbarVi
 import com.example.coffeepictures.app.apptoolbar.presentation.logic.AppToolbarViewState
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
 @RunWith(JUnit4::class)
 class AppToolbarViewModelTest {
+    @get:Rule
+    val testCoroutinesRule = TestCoroutinesRule()
+
     private lateinit var fakeNavigator: FakeAppScreenNavigator
     private lateinit var viewModel: AppToolbarViewModel
 
