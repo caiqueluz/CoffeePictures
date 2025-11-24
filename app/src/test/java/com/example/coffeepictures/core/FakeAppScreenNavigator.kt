@@ -1,4 +1,4 @@
-package com.example.coffeepictures
+package com.example.coffeepictures.core
 
 import com.example.coffeepictures.app.app.presentation.AppScreenModel
 import com.example.coffeepictures.app.navigator.AppScreenNavigator

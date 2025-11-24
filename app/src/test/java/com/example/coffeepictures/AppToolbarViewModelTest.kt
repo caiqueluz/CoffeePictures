@@ -4,6 +4,8 @@ import com.example.coffeepictures.app.app.presentation.AppScreenModel
 import com.example.coffeepictures.app.apptoolbar.presentation.logic.AppToolbarActionModel
 import com.example.coffeepictures.app.apptoolbar.presentation.logic.AppToolbarViewModel
 import com.example.coffeepictures.app.apptoolbar.presentation.logic.AppToolbarViewState
+import com.example.coffeepictures.core.FakeAppScreenNavigator
+import com.example.coffeepictures.core.TestCoroutinesRule
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Rule

@@ -1,4 +1,4 @@
-package com.example.coffeepictures
+package com.example.coffeepictures.core
 
 import com.example.coffeepictures.database.database.ImageEntity
 import com.example.coffeepictures.database.database.ImagesDao
