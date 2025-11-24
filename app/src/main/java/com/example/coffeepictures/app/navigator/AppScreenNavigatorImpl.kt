@@ -1,16 +1,14 @@
 package com.example.coffeepictures.app.navigator
 
 import com.example.coffeepictures.app.app.presentation.AppScreenModel
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.update
 
 class AppScreenNavigatorImpl(
     initialModel: AppScreenModel,
-    private val coroutineScope: CoroutineScope,
 ) : AppScreenNavigator {
-    private val mutableAppScreenFlow = MutableStateFlow<AppScreenModel>(value = initialModel)
+    private val mutableAppScreenFlow = MutableStateFlow(value = initialModel)
     override val appScreenFlow = mutableAppScreenFlow.asStateFlow()
 
     override fun navigateToFavorites() {
@@ -22,8 +20,8 @@ class AppScreenNavigatorImpl(
     }
 
     private fun navigateTo(model: AppScreenModel) {
-        coroutineScope.launch {
-            mutableAppScreenFlow.emit(model)
+        mutableAppScreenFlow.update {
+            model
         }
     }
 }

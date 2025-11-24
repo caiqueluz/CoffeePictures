@@ -18,12 +18,7 @@ class AppToolbarViewModelTest {
     @Test
     fun `GIVEN Home screen model THEN set correct view state`() =
         runTest {
-            fakeNavigator =
-                FakeAppScreenNavigator(
-                    initialModel = AppScreenModel.Home,
-                    coroutineScope = this,
-                )
-
+            fakeNavigator = FakeAppScreenNavigator(initialModel = AppScreenModel.Home)
             viewModel = AppToolbarViewModel(appScreenNavigator = fakeNavigator)
 
             val expected =
@@ -46,12 +41,7 @@ class AppToolbarViewModelTest {
     @Test
     fun `GIVEN Favorites screen model THEN set correct view state`() =
         runTest {
-            fakeNavigator =
-                FakeAppScreenNavigator(
-                    initialModel = AppScreenModel.Favorites,
-                    coroutineScope = this,
-                )
-
+            fakeNavigator = FakeAppScreenNavigator(initialModel = AppScreenModel.Favorites)
             viewModel = AppToolbarViewModel(appScreenNavigator = fakeNavigator)
 
             val expected =
