@@ -57,4 +57,15 @@ class AppToolbarViewModelTest {
                 actual,
             )
         }
+
+    @Test
+    fun `GIVEN Home screen model WHEN first toolbar action icon is clicked THEN navigate to favorites`() =
+        runTest {
+            fakeNavigator = FakeAppScreenNavigator(initialModel = AppScreenModel.Home)
+
+            viewModel = AppToolbarViewModel(appScreenNavigator = fakeNavigator)
+            viewModel.onToolbarActionIconClicked(index = 0)
+
+            fakeNavigator.expectCurrentScreenModel(expected = AppScreenModel.Favorites)
+        }
 }
