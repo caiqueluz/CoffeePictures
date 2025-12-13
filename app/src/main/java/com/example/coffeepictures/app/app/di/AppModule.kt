@@ -8,7 +8,7 @@ import com.example.coffeepictures.designsystem.feedbackmessagepresenter.Feedback
 import com.example.coffeepictures.favorites.di.favoritesModule
 import com.example.coffeepictures.home.di.homeModule
 import com.example.coffeepictures.image.imageModule
-import com.example.coffeepictures.network.networkModule
+import com.example.coffeepictures.infrastructure.network.di.networkModule
 
 fun appModule(feedbackMessagePresenter: FeedbackMessagePresenter) =
     compositeModule(

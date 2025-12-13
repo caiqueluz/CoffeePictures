@@ -1,17 +1,19 @@
-package com.example.coffeepictures.network
+package com.example.coffeepictures.infrastructure.network.impl
 
+import com.example.coffeepictures.infrastructure.network.api.OkHttpClientFactory
+import com.example.coffeepictures.infrastructure.network.api.RetrofitHttpClientFactory
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import kotlin.reflect.KClass
 
-class RetrofitHttpClientFactory(
+class RetrofitHttpClientFactoryImpl(
     private val okHttpClientFactory: OkHttpClientFactory,
-) {
+) : RetrofitHttpClientFactory {
     private val retrofit by lazy {
         createRetrofit()
     }
 
-    fun <HttpClientT : Any> create(klass: KClass<HttpClientT>): HttpClientT {
+    override fun <HttpClientT : Any> create(klass: KClass<HttpClientT>): HttpClientT {
         return retrofit.create(klass.java)
     }
 

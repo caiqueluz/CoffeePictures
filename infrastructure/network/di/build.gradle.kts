@@ -10,4 +10,12 @@ kotlin {
     compilerOptions {
         jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
     }
+
+    dependencies {
+        implementation(project(":infrastructure:network:api"))
+        implementation(project(":infrastructure:network:impl"))
+
+        implementation(platform(libs.koin.bom))
+        implementation(libs.koin.core)
+    }
 }

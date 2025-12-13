@@ -1,11 +1,12 @@
-package com.example.coffeepictures.network
+package com.example.coffeepictures.infrastructure.network.impl
 
+import com.example.coffeepictures.infrastructure.network.api.OkHttpClientFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import kotlin.time.Duration.Companion.seconds
 
-class OkHttpClientFactory {
-    fun create(): OkHttpClient {
+class OkHttpClientFactoryImpl : OkHttpClientFactory {
+    override fun create(): OkHttpClient {
         val loggingInterceptor =
             HttpLoggingInterceptor().apply {
                 level = HttpLoggingInterceptor.Level.BODY

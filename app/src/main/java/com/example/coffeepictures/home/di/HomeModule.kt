@@ -9,7 +9,7 @@ import com.example.coffeepictures.home.data.RandomImagesRetrofitClient
 import com.example.coffeepictures.home.domain.AddImageToFavoritesTask
 import com.example.coffeepictures.home.domain.LoadRandomImageTask
 import com.example.coffeepictures.home.presentation.logic.HomeViewModel
-import com.example.coffeepictures.network.RetrofitHttpClientFactory
+import com.example.coffeepictures.infrastructure.network.api.RetrofitHttpClientFactory
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 

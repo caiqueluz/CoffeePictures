@@ -4,7 +4,7 @@ import android.content.Context
 import coil3.ImageLoader
 import coil3.network.NetworkFetcher
 import coil3.network.okhttp.OkHttpNetworkFetcherFactory
-import com.example.coffeepictures.network.OkHttpClientFactory
+import com.example.coffeepictures.infrastructure.network.api.OkHttpClientFactory
 
 class CoilImageLoaderFactory(
     private val applicationContext: Context,

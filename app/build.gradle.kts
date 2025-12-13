@@ -50,6 +50,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":infrastructure:network:di"))
+    implementation(project(":infrastructure:network:api"))
+
     implementation(platform(libs.androidx.compose.bom))
     implementation(platform(libs.koin.bom))
     implementation(platform(libs.okHttp.bom))

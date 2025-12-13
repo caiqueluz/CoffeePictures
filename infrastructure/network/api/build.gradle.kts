@@ -10,4 +10,10 @@ kotlin {
     compilerOptions {
         jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
     }
+
+    dependencies {
+        implementation(platform(libs.okHttp.bom))
+
+        implementation(libs.okHttp.core)
+    }
 }
