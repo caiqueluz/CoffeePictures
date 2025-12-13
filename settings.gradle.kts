@@ -24,3 +24,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "CoffeePictures"
 include(":app")
+include(":infrastructure:network:api")
+include(":infrastructure:network:impl")
+include(":infrastructure:network:di")
