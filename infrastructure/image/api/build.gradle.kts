@@ -30,6 +30,8 @@ android {
 }
 
 dependencies {
+    implementation(libs.coil3.core)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
 }

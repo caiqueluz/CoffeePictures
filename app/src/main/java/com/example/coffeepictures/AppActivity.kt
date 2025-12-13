@@ -14,7 +14,7 @@ import com.example.coffeepictures.app.App
 import com.example.coffeepictures.core.setCoffeePicturesContent
 import com.example.coffeepictures.designsystem.feedbackmessagepresenter.FeedbackMessagePresenter
 import com.example.coffeepictures.designsystem.feedbackmessagepresenter.rememberFeedbackMessagePresenter
-import com.example.coffeepictures.image.CoilImageLoaderFactory
+import com.example.coffeepictures.infrastructure.api.CoilImageLoaderFactory
 import org.koin.android.ext.android.get
 import org.koin.android.ext.koin.androidContext
 

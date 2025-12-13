@@ -54,6 +54,8 @@ dependencies {
     implementation(project(":infrastructure:network:api"))
     implementation(project(":infrastructure:database:di"))
     implementation(project(":infrastructure:database:api"))
+    implementation(project(":infrastructure:image:di"))
+    implementation(project(":infrastructure:image:api"))
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(platform(libs.koin.bom))

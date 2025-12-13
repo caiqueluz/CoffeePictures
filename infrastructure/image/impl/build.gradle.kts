@@ -30,6 +30,11 @@ android {
 }
 
 dependencies {
+    implementation(project(":infrastructure:image:api"))
+    implementation(project(":infrastructure:network:api"))
+
+    implementation(libs.coil3.network.okHttp)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
 }
