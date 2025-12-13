@@ -1,6 +1,7 @@
-package com.example.coffeepictures.designsystem.feedbackmessagepresenter
+package com.example.coffeepictures.commonui.impl
 
 import androidx.annotation.StringRes
+import com.example.coffeepictures.commonui.api.FeedbackMessagePresenter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.ReceiveChannel

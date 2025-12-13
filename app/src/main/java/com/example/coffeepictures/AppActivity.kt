@@ -11,9 +11,8 @@ import androidx.compose.ui.Modifier
 import coil3.compose.setSingletonImageLoaderFactory
 import com.example.coffeepictures.app.app.di.appModule
 import com.example.coffeepictures.app.App
+import com.example.coffeepictures.commonui.impl.rememberFeedbackMessagePresenter
 import com.example.coffeepictures.core.setCoffeePicturesContent
-import com.example.coffeepictures.designsystem.feedbackmessagepresenter.FeedbackMessagePresenter
-import com.example.coffeepictures.designsystem.feedbackmessagepresenter.rememberFeedbackMessagePresenter
 import com.example.coffeepictures.infrastructure.api.CoilImageLoaderFactory
 import org.koin.android.ext.android.get
 import org.koin.android.ext.koin.androidContext
@@ -29,7 +28,11 @@ class AppActivity : ComponentActivity() {
                     SnackbarHostState()
                 }
 
-            val feedbackMessagePresenter = rememberFeedbackMessagePresenter(state = snackbarHostState)
+            val feedbackMessagePresenter =
+                rememberFeedbackMessagePresenter(
+                    state = snackbarHostState,
+                    getTextValue = ::getString,
+                )
 
             App(
                 modifier = Modifier.fillMaxSize(),
@@ -44,16 +47,6 @@ class AppActivity : ComponentActivity() {
                 snackbarHostState = snackbarHostState,
             )
         }
-    }
-
-    @Composable
-    private fun rememberFeedbackMessagePresenter(state: SnackbarHostState): FeedbackMessagePresenter {
-        return rememberFeedbackMessagePresenter(
-            state = state,
-            getTextValue = { textResId ->
-                getString(textResId)
-            },
-        )
     }
 
     @Composable

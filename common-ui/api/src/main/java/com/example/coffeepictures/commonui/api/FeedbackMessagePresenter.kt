@@ -1,4 +1,4 @@
-package com.example.coffeepictures.designsystem.feedbackmessagepresenter
+package com.example.coffeepictures.commonui.api
 
 import androidx.annotation.StringRes
 
