@@ -1,7 +1,6 @@
 package com.example.coffeepictures.home.di
 
 import com.example.coffeepictures.core.compositeModule
-import com.example.coffeepictures.database.database.AppDatabase
 import com.example.coffeepictures.home.data.AddImageToFavoritesTaskImpl
 import com.example.coffeepictures.home.data.LoadRandomImageTaskImpl
 import com.example.coffeepictures.home.data.RandomImagesHttpClient
@@ -35,10 +34,8 @@ private val domainModule =
         }
 
         factory<AddImageToFavoritesTask> {
-            val imagesDao = get<AppDatabase>().imagesDao()
-
             AddImageToFavoritesTaskImpl(
-                imagesDao = imagesDao,
+                imagesDao = get(),
             )
         }
     }

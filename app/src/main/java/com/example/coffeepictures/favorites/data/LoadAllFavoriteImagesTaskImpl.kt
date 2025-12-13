@@ -1,8 +1,8 @@
 package com.example.coffeepictures.favorites.data
 
-import com.example.coffeepictures.database.database.ImagesDao
 import com.example.coffeepictures.favorites.domain.LoadAllFavoriteImagesTask
 import com.example.coffeepictures.home.domain.RandomImageModel
+import com.example.coffeepictures.infrastructure.database.api.ImagesDao
 
 class LoadAllFavoriteImagesTaskImpl(
     private val imagesDao: ImagesDao,

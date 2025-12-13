@@ -52,6 +52,8 @@ android {
 dependencies {
     implementation(project(":infrastructure:network:di"))
     implementation(project(":infrastructure:network:api"))
+    implementation(project(":infrastructure:database:di"))
+    implementation(project(":infrastructure:database:api"))
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(platform(libs.koin.bom))

@@ -1,6 +1,4 @@
-package com.example.coffeepictures.database.provider
-
-import com.example.coffeepictures.database.database.AppDatabase
+package com.example.coffeepictures.infrastructure.database.impl
 
 class AppDatabaseProvider(
     private val databaseBuilderFactory: RoomDatabaseBuilderFactory,

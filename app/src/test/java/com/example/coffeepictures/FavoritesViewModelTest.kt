@@ -4,12 +4,12 @@ import com.example.coffeepictures.app.app.presentation.AppScreenModel
 import com.example.coffeepictures.core.FakeAppScreenNavigator
 import com.example.coffeepictures.core.FakeImagesDao
 import com.example.coffeepictures.core.TestCoroutinesRule
-import com.example.coffeepictures.database.database.ImageEntity
 import com.example.coffeepictures.favorites.data.LoadAllFavoriteImagesTaskImpl
 import com.example.coffeepictures.favorites.domain.LoadAllFavoriteImagesTask
 import com.example.coffeepictures.favorites.presentation.logic.FavoriteImageModel
 import com.example.coffeepictures.favorites.presentation.logic.FavoritesViewModel
 import com.example.coffeepictures.favorites.presentation.logic.FavoritesViewState
+import com.example.coffeepictures.infrastructure.database.api.ImageEntity
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Before

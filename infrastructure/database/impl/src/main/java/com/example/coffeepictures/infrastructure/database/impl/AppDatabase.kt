@@ -1,7 +1,9 @@
-package com.example.coffeepictures.database.database
+package com.example.coffeepictures.infrastructure.database.impl
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.example.coffeepictures.infrastructure.database.api.ImageEntity
+import com.example.coffeepictures.infrastructure.database.api.ImagesDao
 
 @Database(
     entities = [

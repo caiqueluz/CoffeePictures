@@ -1,4 +1,4 @@
-package com.example.coffeepictures.database.provider
+package com.example.coffeepictures.infrastructure.database.impl
 
 import androidx.room.RoomDatabase
 import kotlin.reflect.KClass

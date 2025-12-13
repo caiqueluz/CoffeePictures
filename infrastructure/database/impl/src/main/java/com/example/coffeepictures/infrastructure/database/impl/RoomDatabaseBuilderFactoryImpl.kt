@@ -1,4 +1,4 @@
-package com.example.coffeepictures.database.provider
+package com.example.coffeepictures.infrastructure.database.impl
 
 import android.content.Context
 import androidx.room.Room

@@ -1,4 +1,4 @@
-package com.example.coffeepictures.database.database
+package com.example.coffeepictures.infrastructure.database.api
 
 import androidx.room.Dao
 import androidx.room.Insert

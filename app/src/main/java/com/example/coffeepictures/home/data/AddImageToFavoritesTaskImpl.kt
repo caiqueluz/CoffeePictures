@@ -1,8 +1,8 @@
 package com.example.coffeepictures.home.data
 
-import com.example.coffeepictures.database.database.ImageEntity
-import com.example.coffeepictures.database.database.ImagesDao
 import com.example.coffeepictures.home.domain.AddImageToFavoritesTask
+import com.example.coffeepictures.infrastructure.database.api.ImageEntity
+import com.example.coffeepictures.infrastructure.database.api.ImagesDao
 
 class AddImageToFavoritesTaskImpl(
     private val imagesDao: ImagesDao,

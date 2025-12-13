@@ -30,6 +30,13 @@ android {
 }
 
 dependencies {
+    implementation(project(":infrastructure:database:api"))
+    implementation(project(":infrastructure:database:impl"))
+
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.core)
+    implementation(libs.room.runtime)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
 }
