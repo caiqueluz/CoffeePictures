@@ -4,14 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import coil3.compose.setSingletonImageLoaderFactory
-import com.example.coffeepictures.app.app.di.appModule
 import com.example.coffeepictures.app.App
-import com.example.coffeepictures.commonui.impl.rememberFeedbackMessagePresenter
+import com.example.coffeepictures.app.app.di.appModule
 import com.example.coffeepictures.core.setCoffeePicturesContent
 import com.example.coffeepictures.infrastructure.api.CoilImageLoaderFactory
 import org.koin.android.ext.android.get
@@ -23,16 +21,8 @@ class AppActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         setCoffeePicturesContent {
-            val snackbarHostState =
-                remember {
-                    SnackbarHostState()
-                }
-
-            val feedbackMessagePresenter =
-                rememberFeedbackMessagePresenter(
-                    state = snackbarHostState,
-                    getTextValue = ::getString,
-                )
+            // TODO - get from application.
+            val appCoroutineScope = rememberCoroutineScope()
 
             App(
                 modifier = Modifier.fillMaxSize(),
@@ -40,11 +30,11 @@ class AppActivity : ComponentActivity() {
                     androidContext(applicationContext)
 
                     modules(
-                        appModule(feedbackMessagePresenter),
+                        appModule(appCoroutineScope),
                     )
                 },
                 configureCoil = ::configureCoil,
-                snackbarHostState = snackbarHostState,
+                getTextValue = ::getString,
             )
         }
     }
@@ -53,7 +43,6 @@ class AppActivity : ComponentActivity() {
     private fun configureCoil() {
         setSingletonImageLoaderFactory {
             val coilImageLoaderFactory = get<CoilImageLoaderFactory>()
-
             coilImageLoaderFactory.create()
         }
     }
