@@ -2,9 +2,9 @@ package com.example.coffeepictures.favorites.presentation.logic
 
 import androidx.lifecycle.viewModelScope
 import com.example.coffeepictures.app.navigator.AppScreenNavigator
-import com.example.coffeepictures.core.BasicViewModel
 import com.example.coffeepictures.favorites.domain.LoadAllFavoriteImagesTask
 import com.example.coffeepictures.home.domain.RandomImageModel
+import com.example.coffeepictures.viewmodel.BasicViewModel
 import kotlinx.coroutines.launch
 
 class FavoritesViewModel(

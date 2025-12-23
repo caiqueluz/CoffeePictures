@@ -6,7 +6,7 @@ import com.example.coffeepictures.app.app.presentation.AppScreenModel
 import com.example.coffeepictures.app.app.presentation.AppScreenModel.Favorites
 import com.example.coffeepictures.app.app.presentation.AppScreenModel.Home
 import com.example.coffeepictures.app.navigator.AppScreenNavigator
-import com.example.coffeepictures.core.BasicViewModel
+import com.example.coffeepictures.viewmodel.BasicViewModel
 import kotlinx.coroutines.launch
 
 class AppToolbarViewModel(
