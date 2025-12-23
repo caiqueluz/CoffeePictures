@@ -1,11 +1,10 @@
 package com.example.coffeepictures.home.di
 
-import com.example.coffeepictures.core.compositeModule
 import com.example.coffeepictures.home.presentation.logic.HomeViewModel
 import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.module
 
-private val presentationModule =
+val homeModule =
     module {
         viewModel {
             HomeViewModel(
@@ -15,8 +14,3 @@ private val presentationModule =
             )
         }
     }
-
-val homeModule =
-    compositeModule(
-        presentationModule,
-    )
