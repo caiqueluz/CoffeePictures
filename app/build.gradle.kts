@@ -50,6 +50,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":design-system"))
     implementation(project(":infrastructure:network:di"))
     implementation(project(":infrastructure:network:api"))
     implementation(project(":infrastructure:database:di"))
