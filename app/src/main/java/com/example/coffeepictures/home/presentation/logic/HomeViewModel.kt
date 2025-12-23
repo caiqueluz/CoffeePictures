@@ -18,17 +18,13 @@ class HomeViewModel(
     private var errorThrowable: Throwable? = null
 
     override fun createViewState(): HomeViewState {
-        val imageUrl =
-            if (randomImageModel != null && errorThrowable == null) {
-                requireNotNull(randomImageModel).url
-            } else {
-                null
-            }
-
         return HomeViewState(
             isLoadingVisible = randomImageModel == null && errorThrowable == null,
             isErrorVisible = randomImageModel == null && errorThrowable != null,
-            imageUrl = imageUrl,
+            imageUrl =
+                randomImageModel
+                    .takeIf { it != null && errorThrowable == null }
+                    ?.url,
             isLoadNewButtonEnabled = randomImageModel != null || errorThrowable != null,
             isAddToFavoritesButtonEnabled = randomImageModel != null && errorThrowable == null,
         )

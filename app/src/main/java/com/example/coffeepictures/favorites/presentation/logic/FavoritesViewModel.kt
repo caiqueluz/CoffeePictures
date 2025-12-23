@@ -15,21 +15,14 @@ class FavoritesViewModel(
     private var errorThrowable: Throwable? = null
 
     override fun createViewState(): FavoritesViewState {
-        val imageModels =
-            if (randomImageModels.isNotEmpty() && errorThrowable == null) {
-                randomImageModels.map { model ->
-                    createFavoriteImageModel(
-                        randomImageModel = model
-                    )
-                }
-            } else {
-                emptyList()
-            }
-
         return FavoritesViewState(
             isLoadingVisible = randomImageModels.isEmpty() && errorThrowable == null,
             isErrorVisible = randomImageModels.isEmpty() && errorThrowable != null,
-            imageModels = imageModels,
+            imageModels =
+                randomImageModels
+                    .takeIf { it.isNotEmpty() && errorThrowable == null }
+                    ?.map(::createFavoriteImageModel)
+                    .orEmpty(),
         )
     }
 

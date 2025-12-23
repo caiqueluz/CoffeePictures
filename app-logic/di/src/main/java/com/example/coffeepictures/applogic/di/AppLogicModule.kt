@@ -13,6 +13,11 @@ import org.koin.dsl.module
 
 val appLogicModule =
     module {
+        factory<RandomImagesRetrofitClient> {
+            get<RetrofitHttpClientFactory>()
+                .create(RandomImagesRetrofitClient::class)
+        }
+
         factory<LoadAllFavoriteImagesTask> {
             LoadAllFavoriteImagesTaskImpl(
                 imagesDao = get(),
@@ -20,12 +25,8 @@ val appLogicModule =
         }
 
         factory {
-            val client =
-                get<RetrofitHttpClientFactory>()
-                    .create(RandomImagesRetrofitClient::class)
-
             RandomImagesHttpClient(
-                randomImagesRetrofitClient = client,
+                randomImagesRetrofitClient = get(),
             )
         }
 
