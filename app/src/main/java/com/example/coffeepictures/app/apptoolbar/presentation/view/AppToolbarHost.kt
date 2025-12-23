@@ -24,6 +24,7 @@ fun AppToolbarHost(
     AppToolbarView(
         modifier = modifier,
         viewState = viewState,
-        onToolbarIconClicked = viewModel::onToolbarActionIconClicked,
+        onToolbarBackIconClicked = viewModel::onToolbarBackIconClicked,
+        onToolbarActionIconClicked = viewModel::onToolbarActionIconClicked,
     )
 }

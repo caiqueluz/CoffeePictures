@@ -43,9 +43,14 @@ class AppToolbarViewModel(
             }
 
         return AppToolbarViewState(
+            isBackIconVisible = appScreenModel is Favorites,
             titleTextResId = titleTextResId,
             actionModels = actionModels,
         )
+    }
+
+    fun onToolbarBackIconClicked() {
+        appScreenNavigator.navigateBackToHome()
     }
 
     fun onToolbarActionIconClicked(index: Int) {

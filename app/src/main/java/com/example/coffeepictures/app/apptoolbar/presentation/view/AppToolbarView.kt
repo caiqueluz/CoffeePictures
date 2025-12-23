@@ -2,6 +2,7 @@ package com.example.coffeepictures.app.apptoolbar.presentation.view
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -10,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
@@ -25,7 +27,8 @@ import com.example.coffeepictures.designsystem.CoffeePicturesPreview
 fun AppToolbarView(
     modifier: Modifier = Modifier,
     viewState: AppToolbarViewState,
-    onToolbarIconClicked: (Int) -> Unit,
+    onToolbarBackIconClicked: () -> Unit,
+    onToolbarActionIconClicked: (Int) -> Unit,
 ) {
     TopAppBar(
         modifier = modifier,
@@ -34,12 +37,25 @@ fun AppToolbarView(
                 text = stringResource(id = viewState.titleTextResId),
             )
         },
+        navigationIcon = {
+            if (viewState.isBackIconVisible) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    onIconClicked = onToolbarBackIconClicked,
+                )
+            }
+        },
         actions = {
             viewState.actionModels.forEachIndexed { index, model ->
-                ActionIcon(
-                    model = model,
+                val imageVector =
+                    when (model) {
+                        AppToolbarActionModel.FAVORITES -> Icons.Filled.Star
+                    }
+
+                Icon(
+                    imageVector = imageVector,
                     onIconClicked = {
-                        onToolbarIconClicked(index)
+                        onToolbarActionIconClicked(index)
                     },
                 )
             }
@@ -48,19 +64,14 @@ fun AppToolbarView(
 }
 
 @Composable
-private fun ActionIcon(
+private fun Icon(
     modifier: Modifier = Modifier,
-    model: AppToolbarActionModel,
+    imageVector: ImageVector,
     onIconClicked: () -> Unit,
 ) {
     IconButton(
         onClick = onIconClicked,
     ) {
-        val imageVector =
-            when (model) {
-                AppToolbarActionModel.FAVORITES -> Icons.Filled.Star
-            }
-
         Icon(
             modifier = modifier.size(16.dp),
             imageVector = imageVector,
@@ -74,6 +85,7 @@ private class AppToolbarViewParameterProvider : PreviewParameterProvider<AppTool
         sequenceOf(
             // Home.
             AppToolbarViewState(
+                isBackIconVisible = false,
                 titleTextResId = R.string.home_toolbar_title_text,
                 actionModels =
                     listOf(
@@ -82,6 +94,7 @@ private class AppToolbarViewParameterProvider : PreviewParameterProvider<AppTool
             ),
             // Favorites.
             AppToolbarViewState(
+                isBackIconVisible = true,
                 titleTextResId = R.string.favorites_toolbar_title_text,
                 actionModels = emptyList(),
             ),
@@ -94,7 +107,8 @@ private fun AppToolbarViewPreview(@PreviewParameter(AppToolbarViewParameterProvi
     CoffeePicturesPreview {
         AppToolbarView(
             viewState = viewState,
-            onToolbarIconClicked = {},
+            onToolbarBackIconClicked = {},
+            onToolbarActionIconClicked = {},
         )
     }
 }
