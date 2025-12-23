@@ -51,6 +51,8 @@ android {
 
 dependencies {
     implementation(project(":design-system"))
+    implementation(project(":app-logic:di"))
+    implementation(project(":app-logic:api"))
     implementation(project(":infrastructure:network:di"))
     implementation(project(":infrastructure:network:api"))
     implementation(project(":infrastructure:database:di"))

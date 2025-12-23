@@ -1,6 +1,7 @@
 package com.example.coffeepictures.app.app.di
 
 import com.example.coffeepictures.app.apptoolbar.di.appToolbarModule
+import com.example.coffeepictures.applogic.di.appLogicModule
 import com.example.coffeepictures.common.ui.di.commonUiModule
 import com.example.coffeepictures.core.compositeModule
 import com.example.coffeepictures.favorites.di.favoritesModule
@@ -16,6 +17,7 @@ fun appModule(appCoroutineScope: CoroutineScope) =
         imageModule,
         networkModule,
         commonUiModule(appCoroutineScope),
+        appLogicModule,
         appToolbarModule,
         homeModule,
         favoritesModule,

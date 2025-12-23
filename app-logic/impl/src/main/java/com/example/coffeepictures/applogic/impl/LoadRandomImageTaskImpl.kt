@@ -1,7 +1,7 @@
-package com.example.coffeepictures.home.data
+package com.example.coffeepictures.applogic.impl
 
-import com.example.coffeepictures.home.domain.LoadRandomImageTask
-import com.example.coffeepictures.home.domain.RandomImageModel
+import com.example.coffeepictures.applogic.api.LoadRandomImageTask
+import com.example.coffeepictures.applogic.api.RandomImageModel
 
 class LoadRandomImageTaskImpl(
     private val httpClient: RandomImagesHttpClient,

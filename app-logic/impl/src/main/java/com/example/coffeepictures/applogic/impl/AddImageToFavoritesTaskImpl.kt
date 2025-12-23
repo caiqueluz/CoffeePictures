@@ -1,6 +1,6 @@
-package com.example.coffeepictures.home.data
+package com.example.coffeepictures.applogic.impl
 
-import com.example.coffeepictures.home.domain.AddImageToFavoritesTask
+import com.example.coffeepictures.applogic.api.AddImageToFavoritesTask
 import com.example.coffeepictures.infrastructure.database.api.ImageEntity
 import com.example.coffeepictures.infrastructure.database.api.ImagesDao
 

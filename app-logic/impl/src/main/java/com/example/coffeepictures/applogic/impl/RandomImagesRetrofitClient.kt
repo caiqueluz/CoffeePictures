@@ -1,4 +1,4 @@
-package com.example.coffeepictures.home.data
+package com.example.coffeepictures.applogic.impl
 
 import retrofit2.Response
 import retrofit2.http.GET

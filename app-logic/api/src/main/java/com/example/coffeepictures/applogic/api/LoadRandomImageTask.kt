@@ -1,4 +1,4 @@
-package com.example.coffeepictures.home.domain
+package com.example.coffeepictures.applogic.api
 
 interface LoadRandomImageTask {
     suspend fun load(): Result<RandomImageModel>

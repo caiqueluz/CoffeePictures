@@ -2,10 +2,10 @@ package com.example.coffeepictures.home.presentation.logic
 
 import androidx.lifecycle.viewModelScope
 import com.example.coffeepictures.R
+import com.example.coffeepictures.applogic.api.AddImageToFavoritesTask
+import com.example.coffeepictures.applogic.api.LoadRandomImageTask
+import com.example.coffeepictures.applogic.api.RandomImageModel
 import com.example.coffeepictures.common.ui.api.FeedbackMessagePresenter
-import com.example.coffeepictures.home.domain.AddImageToFavoritesTask
-import com.example.coffeepictures.home.domain.LoadRandomImageTask
-import com.example.coffeepictures.home.domain.RandomImageModel
 import com.example.coffeepictures.viewmodel.BasicViewModel
 import kotlinx.coroutines.launch
 

@@ -1,4 +1,4 @@
-package com.example.coffeepictures.home.domain
+package com.example.coffeepictures.applogic.api
 
 data class RandomImageModel(
     val url: String,
