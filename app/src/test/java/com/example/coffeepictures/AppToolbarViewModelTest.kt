@@ -13,6 +13,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
+// TODO - replace with integration test.
 @RunWith(JUnit4::class)
 class AppToolbarViewModelTest {
     @get:Rule

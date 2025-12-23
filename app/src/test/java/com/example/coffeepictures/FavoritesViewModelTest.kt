@@ -1,15 +1,13 @@
 package com.example.coffeepictures
 
 import com.example.coffeepictures.app.app.presentation.AppScreenModel
+import com.example.coffeepictures.applogic.api.RandomImageModel
 import com.example.coffeepictures.core.FakeAppScreenNavigator
-import com.example.coffeepictures.core.FakeImagesDao
 import com.example.coffeepictures.core.TestCoroutinesRule
-import com.example.coffeepictures.favorites.data.LoadAllFavoriteImagesTaskImpl
-import com.example.coffeepictures.favorites.domain.LoadAllFavoriteImagesTask
+import com.example.coffeepictures.core.applogic.FakeLoadAllFavoriteImagesTask
 import com.example.coffeepictures.favorites.presentation.logic.FavoriteImageModel
 import com.example.coffeepictures.favorites.presentation.logic.FavoritesViewModel
 import com.example.coffeepictures.favorites.presentation.logic.FavoritesViewState
-import com.example.coffeepictures.infrastructure.database.api.ImageEntity
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Before
@@ -18,20 +16,19 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
+// TODO - replace with integration test.
 @RunWith(JUnit4::class)
 class FavoritesViewModelTest {
     @get:Rule
     val testCoroutinesRule = TestCoroutinesRule()
 
     private lateinit var fakeNavigator: FakeAppScreenNavigator
-    private lateinit var fakeImagesDao: FakeImagesDao
-    private lateinit var loadAllFavoriteImagesTask: LoadAllFavoriteImagesTask
+    private lateinit var fakeLoadAllFavoriteImagesTask: FakeLoadAllFavoriteImagesTask
     private lateinit var viewModel: FavoritesViewModel
 
     @Before
     fun before() {
-        fakeImagesDao = FakeImagesDao()
-        loadAllFavoriteImagesTask = LoadAllFavoriteImagesTaskImpl(fakeImagesDao)
+        fakeLoadAllFavoriteImagesTask = FakeLoadAllFavoriteImagesTask()
     }
 
     @Test
@@ -41,16 +38,16 @@ class FavoritesViewModelTest {
 
             viewModel =
                 FavoritesViewModel(
-                    loadAllFavoriteImagesTask = loadAllFavoriteImagesTask,
+                    loadAllFavoriteImagesTask = fakeLoadAllFavoriteImagesTask,
                     appScreenNavigator = fakeNavigator,
                 )
 
             listOf(
-                ImageEntity(url = "example.com/1.png"),
-                ImageEntity(url = "example.com/2.png"),
-                ImageEntity(url = "example.com/3.png"),
-            ).forEach { model ->
-                fakeImagesDao.insert(entity = model)
+                RandomImageModel(url = "example.com/1.png"),
+                RandomImageModel(url = "example.com/2.png"),
+                RandomImageModel(url = "example.com/3.png"),
+            ).let { result ->
+                fakeLoadAllFavoriteImagesTask.fakeSuccess(model = result)
             }
 
             viewModel.onFavoritesStarted()
@@ -91,8 +88,13 @@ class FavoritesViewModelTest {
 
             viewModel =
                 FavoritesViewModel(
-                    loadAllFavoriteImagesTask = loadAllFavoriteImagesTask,
+                    loadAllFavoriteImagesTask = fakeLoadAllFavoriteImagesTask,
                     appScreenNavigator = fakeNavigator,
+                )
+
+            fakeLoadAllFavoriteImagesTask
+                .fakeSuccess(
+                    model = emptyList(),
                 )
 
             viewModel.onFavoritesStarted()
@@ -119,11 +121,15 @@ class FavoritesViewModelTest {
 
             viewModel =
                 FavoritesViewModel(
-                    loadAllFavoriteImagesTask = loadAllFavoriteImagesTask,
+                    loadAllFavoriteImagesTask = fakeLoadAllFavoriteImagesTask,
                     appScreenNavigator = fakeNavigator,
                 )
 
-            fakeImagesDao.fakeGetAllImagesError()
+            fakeLoadAllFavoriteImagesTask
+                .fakeFailure(
+                    throwable = Exception("Get all images fake error."),
+                )
+
             viewModel.onFavoritesStarted()
 
             val expected =
@@ -148,8 +154,13 @@ class FavoritesViewModelTest {
 
             viewModel =
                 FavoritesViewModel(
-                    loadAllFavoriteImagesTask = loadAllFavoriteImagesTask,
+                    loadAllFavoriteImagesTask = fakeLoadAllFavoriteImagesTask,
                     appScreenNavigator = fakeNavigator,
+                )
+
+            fakeLoadAllFavoriteImagesTask
+                .fakeSuccess(
+                    model = emptyList(),
                 )
 
             viewModel.onFavoritesStarted()
