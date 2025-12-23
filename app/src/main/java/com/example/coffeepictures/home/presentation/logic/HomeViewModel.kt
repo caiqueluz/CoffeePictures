@@ -2,7 +2,7 @@ package com.example.coffeepictures.home.presentation.logic
 
 import androidx.lifecycle.viewModelScope
 import com.example.coffeepictures.R
-import com.example.coffeepictures.commonui.api.FeedbackMessagePresenter
+import com.example.coffeepictures.common.ui.api.FeedbackMessagePresenter
 import com.example.coffeepictures.core.BasicViewModel
 import com.example.coffeepictures.home.domain.AddImageToFavoritesTask
 import com.example.coffeepictures.home.domain.LoadRandomImageTask

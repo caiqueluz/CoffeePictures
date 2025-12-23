@@ -1,7 +1,7 @@
 package com.example.coffeepictures.app.app.di
 
 import com.example.coffeepictures.app.apptoolbar.di.appToolbarModule
-import com.example.coffeepictures.commonui.di.commonUiModule
+import com.example.coffeepictures.common.ui.di.commonUiModule
 import com.example.coffeepictures.core.compositeModule
 import com.example.coffeepictures.favorites.di.favoritesModule
 import com.example.coffeepictures.home.di.homeModule
