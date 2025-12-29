@@ -5,11 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import coil3.compose.setSingletonImageLoaderFactory
 import com.example.coffeepictures.app.App
 import com.example.coffeepictures.app.app.di.appModule
+import com.example.coffeepictures.core.coffeePicturesApplication
 import com.example.coffeepictures.core.setCoffeePicturesContent
 import com.example.coffeepictures.infrastructure.api.CoilImageLoaderFactory
 import org.koin.android.ext.android.get
@@ -21,16 +21,13 @@ class AppActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         setCoffeePicturesContent {
-            // TODO - get from application.
-            val appCoroutineScope = rememberCoroutineScope()
-
             App(
                 modifier = Modifier.fillMaxSize(),
                 koinAppDeclaration = {
                     androidContext(applicationContext)
 
                     modules(
-                        appModule(appCoroutineScope),
+                        appModule(coffeePicturesApplication.appDependencies),
                     )
                 },
                 configureCoil = ::configureCoil,
