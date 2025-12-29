@@ -30,6 +30,7 @@ class AppToolbarViewModelTest {
 
             val expected =
                 AppToolbarViewState(
+                    isBackIconVisible = false,
                     titleTextResId = R.string.home_toolbar_title_text,
                     actionModels =
                         listOf(
@@ -53,6 +54,7 @@ class AppToolbarViewModelTest {
 
             val expected =
                 AppToolbarViewState(
+                    isBackIconVisible = true,
                     titleTextResId = R.string.favorites_toolbar_title_text,
                     actionModels = emptyList(),
                 )
