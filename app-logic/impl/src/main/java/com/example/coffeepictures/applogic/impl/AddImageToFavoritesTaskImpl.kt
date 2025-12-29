@@ -9,7 +9,12 @@ class AddImageToFavoritesTaskImpl(
 ) : AddImageToFavoritesTask {
     override suspend fun add(imageUrl: String): Result<Unit> {
         return try {
-            val entity = ImageEntity(url = imageUrl)
+            val entity =
+                ImageEntity(
+                    url = imageUrl,
+                    isFavorite = true,
+                )
+
             imagesDao.insert(entity)
 
             Result.success(Unit)

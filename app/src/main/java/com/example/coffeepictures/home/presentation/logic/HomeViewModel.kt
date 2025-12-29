@@ -3,6 +3,7 @@ package com.example.coffeepictures.home.presentation.logic
 import androidx.lifecycle.viewModelScope
 import com.example.coffeepictures.R
 import com.example.coffeepictures.applogic.api.AddImageToFavoritesTask
+import com.example.coffeepictures.applogic.api.GetImageByUrlTask
 import com.example.coffeepictures.applogic.api.LoadRandomImageTask
 import com.example.coffeepictures.applogic.api.RandomImageModel
 import com.example.coffeepictures.common.ui.api.FeedbackMessagePresenter
@@ -11,6 +12,7 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(
     private val loadRandomImageTask: LoadRandomImageTask,
+    private val getImageByUrlTask: GetImageByUrlTask,
     private val addImageToFavoritesTask: AddImageToFavoritesTask,
     private val feedbackMessagePresenter: FeedbackMessagePresenter,
 ) : BasicViewModel<HomeViewState>() {
@@ -26,7 +28,7 @@ class HomeViewModel(
                     .takeIf { it != null && errorThrowable == null }
                     ?.url,
             isLoadNewButtonEnabled = randomImageModel != null || errorThrowable != null,
-            isAddToFavoritesButtonEnabled = randomImageModel != null && errorThrowable == null,
+            isAddToFavoritesButtonEnabled = randomImageModel != null && randomImageModel?.isFavorite == false && errorThrowable == null,
         )
     }
 
@@ -63,6 +65,8 @@ class HomeViewModel(
 
             addImageToFavoritesTask.add(imageUrl)
                 .onSuccess {
+                    reloadImageByUrl()
+
                     feedbackMessagePresenter.show(
                         textResId = R.string.home_add_image_to_favorites_feedback_success_message_text,
                     )
@@ -72,6 +76,18 @@ class HomeViewModel(
                         textResId = R.string.home_add_image_to_favorites_feedback_error_message_text,
                     )
                 }
+        }
+    }
+
+    private fun reloadImageByUrl() {
+        viewModelScope.launch {
+            val imageUrl = requireNotNull(randomImageModel).url
+
+            getImageByUrlTask.get(url = imageUrl)
+                .onSuccess { randomImageModel = it }
+                .onFailure { errorThrowable = it }
+
+            updateViewState()
         }
     }
 }

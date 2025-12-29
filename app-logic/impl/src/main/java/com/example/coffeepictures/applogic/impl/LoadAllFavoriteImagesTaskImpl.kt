@@ -16,7 +16,10 @@ class LoadAllFavoriteImagesTaskImpl(
                         throw Throwable("No random images found.")
                     }
                     .map { entity ->
-                        RandomImageModel(url = entity.url)
+                        RandomImageModel(
+                            url = entity.url,
+                            isFavorite = entity.isFavorite,
+                        )
                     }
 
             Result.success(value = imageModels)

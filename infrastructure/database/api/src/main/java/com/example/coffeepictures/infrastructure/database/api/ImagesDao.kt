@@ -12,4 +12,14 @@ interface ImagesDao {
 
     @Query("SELECT * FROM images")
     suspend fun getAllImages(): List<ImageEntity>
+
+    @Query(
+        value =
+            """
+                SELECT * FROM images
+                WHERE url = :url
+                LIMIT 1
+            """,
+    )
+    suspend fun getImageByUrl(url: String): ImageEntity
 }

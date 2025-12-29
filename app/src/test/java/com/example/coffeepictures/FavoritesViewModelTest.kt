@@ -43,9 +43,18 @@ class FavoritesViewModelTest {
                 )
 
             listOf(
-                RandomImageModel(url = "example.com/1.png"),
-                RandomImageModel(url = "example.com/2.png"),
-                RandomImageModel(url = "example.com/3.png"),
+                RandomImageModel(
+                    url = "example.com/1.png",
+                    isFavorite = false,
+                ),
+                RandomImageModel(
+                    url = "example.com/2.png",
+                    isFavorite = false,
+                ),
+                RandomImageModel(
+                    url = "example.com/3.png",
+                    isFavorite = false,
+                ),
             ).let { result ->
                 fakeLoadAllFavoriteImagesTask.fakeSuccess(model = result)
             }

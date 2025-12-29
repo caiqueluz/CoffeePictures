@@ -9,7 +9,7 @@ import com.example.coffeepictures.infrastructure.database.api.ImagesDao
     entities = [
         ImageEntity::class,
     ],
-    version = 1,
+    version = 2,
     exportSchema = false,
 )
 abstract class AppDatabase : RoomDatabase() {

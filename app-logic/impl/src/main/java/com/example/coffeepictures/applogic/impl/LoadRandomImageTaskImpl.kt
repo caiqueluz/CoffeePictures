@@ -11,6 +11,7 @@ class LoadRandomImageTaskImpl(
             .map { response ->
                 RandomImageModel(
                     url = response.url,
+                    isFavorite = false,
                 )
             }
     }

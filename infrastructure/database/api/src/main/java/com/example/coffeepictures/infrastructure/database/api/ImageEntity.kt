@@ -9,4 +9,6 @@ data class ImageEntity(
     @PrimaryKey
     @ColumnInfo("url")
     val url: String,
+    @ColumnInfo("is_favorite")
+    val isFavorite: Boolean,
 )
