@@ -1,4 +1,4 @@
-package com.example.coffeepictures.apptoolbar.presentation.logic
+package com.example.coffeepictures.feature.impl.apptoolbar.logic
 
 import com.example.coffeepictures.navigator.AppScreenModel
 import com.example.coffeepictures.navigator.AppScreenModel.Home

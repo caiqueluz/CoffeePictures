@@ -11,9 +11,9 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.coffeepictures.app.app.FeedbackMessagePresenterEffect
 import com.example.coffeepictures.app.app.rememberSnackbarHostState
-import com.example.coffeepictures.apptoolbar.presentation.view.AppToolbarHost
 import com.example.coffeepictures.common.ui.api.FeedbackMessagePresenter
 import com.example.coffeepictures.favorites.presentation.view.FavoritesHost
+import com.example.coffeepictures.feature.api.AppToolbarEntrypoint
 import com.example.coffeepictures.home.presentation.view.HomeHost
 import com.example.coffeepictures.navigator.AppScreenModel.Favorites
 import com.example.coffeepictures.navigator.AppScreenModel.Home
@@ -29,6 +29,7 @@ fun AppHost(
     val appScreenNavigator = rememberAppScreenNavigator(initialModel = Home)
     val snackbarHostState = rememberSnackbarHostState()
     val feedbackMessagePresenter = koinInject<FeedbackMessagePresenter>()
+    val appToolbarEntrypoint = koinInject<AppToolbarEntrypoint>()
 
     FeedbackMessagePresenterEffect(
         presenter = feedbackMessagePresenter,
@@ -39,7 +40,7 @@ fun AppHost(
     Scaffold(
         modifier = modifier,
         topBar = {
-            AppToolbarHost(
+            appToolbarEntrypoint.Content(
                 appScreenNavigator = appScreenNavigator,
             )
         },

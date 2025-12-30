@@ -40,6 +40,7 @@ dependencies {
     implementation(project(":infrastructure:database:api"))
     implementation(project(":infrastructure:image:api"))
     implementation(project(":common:ui:api"))
+    implementation(project(":common:navigator"))
     implementation(project(":common:view-model"))
     implementation(project(":feature:api"))
 

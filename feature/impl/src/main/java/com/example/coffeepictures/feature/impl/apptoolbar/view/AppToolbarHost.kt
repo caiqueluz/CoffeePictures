@@ -1,10 +1,10 @@
-package com.example.coffeepictures.apptoolbar.presentation.view
+package com.example.coffeepictures.feature.impl.apptoolbar.view
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.coffeepictures.apptoolbar.presentation.logic.AppToolbarViewModel
+import com.example.coffeepictures.feature.impl.apptoolbar.logic.AppToolbarViewModel
 import com.example.coffeepictures.navigator.AppScreenNavigator
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf

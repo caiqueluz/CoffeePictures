@@ -63,6 +63,8 @@ dependencies {
     implementation(project(":common:ui:api"))
     implementation(project(":common:navigator"))
     implementation(project(":common:view-model"))
+    implementation(project(":feature:di"))
+    implementation(project(":feature:api"))
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(platform(libs.koin.bom))

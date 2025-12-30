@@ -1,7 +1,7 @@
-package com.example.coffeepictures.apptoolbar.presentation.logic
+package com.example.coffeepictures.feature.impl.apptoolbar.logic
 
 import androidx.lifecycle.viewModelScope
-import com.example.coffeepictures.R
+import com.example.coffeepictures.feature.impl.R
 import com.example.coffeepictures.navigator.AppScreenModel.Favorites
 import com.example.coffeepictures.navigator.AppScreenModel.Home
 import com.example.coffeepictures.navigator.AppScreenNavigator

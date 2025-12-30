@@ -34,6 +34,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":common:navigator"))
+
     implementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(platform(libs.androidx.compose.bom))
 
