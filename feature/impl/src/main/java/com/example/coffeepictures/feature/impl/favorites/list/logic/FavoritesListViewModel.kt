@@ -6,6 +6,7 @@ import com.example.coffeepictures.applogic.api.LoadAllFavoriteImagesTask
 import com.example.coffeepictures.applogic.api.ImageModel
 import com.example.coffeepictures.common.ui.api.FeedbackMessagePresenter
 import com.example.coffeepictures.feature.impl.R
+import com.example.coffeepictures.feature.impl.favorites.navigator.FavoritesScreenNavigator
 import com.example.coffeepictures.navigator.AppScreenNavigator
 import com.example.coffeepictures.viewmodel.BasicViewModel
 import kotlinx.coroutines.launch
@@ -14,6 +15,7 @@ class FavoritesListViewModel(
     private val loadAllFavoriteImagesTask: LoadAllFavoriteImagesTask,
     private val deleteAllFavoritesTask: DeleteAllFavoritesTask,
     private val appScreenNavigator: AppScreenNavigator,
+    private val favoritesScreenNavigator: FavoritesScreenNavigator,
     private val feedbackMessagePresenter: FeedbackMessagePresenter,
 ) : BasicViewModel<FavoritesListViewState>() {
     private var imageModels = listOf<ImageModel>()
