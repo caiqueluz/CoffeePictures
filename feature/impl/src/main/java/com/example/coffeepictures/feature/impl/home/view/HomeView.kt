@@ -51,6 +51,7 @@ fun HomeView(
         modifier = modifier,
         topBar = {
             Toolbar(
+                isStarIconVisible = viewState.isToolbarStarIconVisible,
                 onToolbarStarIconClicked = onToolbarStarIconClicked,
             )
         },
@@ -72,6 +73,7 @@ fun HomeView(
 @Composable
 private fun Toolbar(
     modifier: Modifier = Modifier,
+    isStarIconVisible: Boolean,
     onToolbarStarIconClicked: () -> Unit,
 ) {
     TopAppBar(
@@ -82,10 +84,12 @@ private fun Toolbar(
             )
         },
         actions = {
-            ToolbarIcon(
-                imageVector = Icons.Filled.Star,
-                onIconClicked = onToolbarStarIconClicked,
-            )
+            if (isStarIconVisible) {
+                ToolbarIcon(
+                    imageVector = Icons.Filled.Star,
+                    onIconClicked = onToolbarStarIconClicked,
+                )
+            }
         },
     )
 }
@@ -227,6 +231,7 @@ private class HomeViewPreviewProvider : PreviewParameterProvider<HomeViewState> 
         sequenceOf(
             // Loading.
             HomeViewState(
+                isToolbarStarIconVisible = true,
                 isLoadingVisible = true,
                 isErrorVisible = false,
                 imageUrl = null,
@@ -235,6 +240,7 @@ private class HomeViewPreviewProvider : PreviewParameterProvider<HomeViewState> 
             ),
             // Error.
             HomeViewState(
+                isToolbarStarIconVisible = true,
                 isLoadingVisible = false,
                 isErrorVisible = true,
                 imageUrl = null,
@@ -243,6 +249,7 @@ private class HomeViewPreviewProvider : PreviewParameterProvider<HomeViewState> 
             ),
             // Success.
             HomeViewState(
+                isToolbarStarIconVisible = true,
                 isLoadingVisible = false,
                 isErrorVisible = false,
                 imageUrl = "example.com",

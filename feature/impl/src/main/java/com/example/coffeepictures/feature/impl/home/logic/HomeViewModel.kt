@@ -23,6 +23,7 @@ class HomeViewModel(
 
     override fun createViewState(): HomeViewState {
         return HomeViewState(
+            isToolbarStarIconVisible = true, // TODO.
             isLoadingVisible = imageModel == null && errorThrowable == null,
             isErrorVisible = imageModel == null && errorThrowable != null,
             imageUrl =
