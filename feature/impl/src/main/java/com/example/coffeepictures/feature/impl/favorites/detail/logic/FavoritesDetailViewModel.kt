@@ -44,6 +44,10 @@ class FavoritesDetailViewModel(
         deleteFavorite()
     }
 
+    fun onBackButtonClicked() {
+        favoritesScreenNavigator.navigateBackToList()
+    }
+
     private fun loadFavoritesDetail() {
         imageModel = null
         errorThrowable = null

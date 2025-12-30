@@ -1,5 +1,6 @@
 package com.example.coffeepictures.feature.impl.favorites.detail.view
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -22,6 +23,10 @@ fun FavoritesDetailHost(
         }
 
     val viewState by viewModel.viewState.collectAsStateWithLifecycle()
+
+    BackHandler(
+        onBack = viewModel::onBackButtonClicked,
+    )
 
     FavoritesDetailView(
         modifier =
