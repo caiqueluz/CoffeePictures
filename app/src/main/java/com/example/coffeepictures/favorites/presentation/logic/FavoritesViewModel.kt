@@ -1,7 +1,7 @@
 package com.example.coffeepictures.favorites.presentation.logic
 
 import androidx.lifecycle.viewModelScope
-import com.example.coffeepictures.app.navigator.AppScreenNavigator
+import com.example.coffeepictures.core.navigator.AppScreenNavigator
 import com.example.coffeepictures.applogic.api.LoadAllFavoriteImagesTask
 import com.example.coffeepictures.applogic.api.ImageModel
 import com.example.coffeepictures.viewmodel.BasicViewModel

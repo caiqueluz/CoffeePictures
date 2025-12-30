@@ -1,4 +1,4 @@
-package com.example.coffeepictures.app.navigator
+package com.example.coffeepictures.core.navigator
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember

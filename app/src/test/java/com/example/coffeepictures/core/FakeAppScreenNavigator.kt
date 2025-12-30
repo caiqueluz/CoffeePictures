@@ -1,8 +1,8 @@
 package com.example.coffeepictures.core
 
 import com.example.coffeepictures.app.app.presentation.AppScreenModel
-import com.example.coffeepictures.app.navigator.AppScreenNavigator
-import com.example.coffeepictures.app.navigator.AppScreenNavigatorImpl
+import com.example.coffeepictures.core.navigator.AppScreenNavigator
+import com.example.coffeepictures.core.navigator.AppScreenNavigatorImpl
 import org.junit.Assert.assertEquals
 
 class FakeAppScreenNavigator(

@@ -1,4 +1,4 @@
-package com.example.coffeepictures.app.navigator
+package com.example.coffeepictures.core.navigator
 
 import com.example.coffeepictures.app.app.presentation.AppScreenModel
 import kotlinx.coroutines.flow.StateFlow

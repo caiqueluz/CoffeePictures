@@ -4,8 +4,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.coffeepictures.R
 import com.example.coffeepictures.app.app.presentation.AppScreenModel.Favorites
 import com.example.coffeepictures.app.app.presentation.AppScreenModel.Home
-import com.example.coffeepictures.app.navigator.AppScreenNavigator
-import com.example.coffeepictures.app.navigator.currentModel
+import com.example.coffeepictures.core.navigator.AppScreenNavigator
+import com.example.coffeepictures.core.navigator.currentModel
 import com.example.coffeepictures.viewmodel.BasicViewModel
 import kotlinx.coroutines.launch
 

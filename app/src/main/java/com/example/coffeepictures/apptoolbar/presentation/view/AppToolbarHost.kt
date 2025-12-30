@@ -5,7 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.coffeepictures.apptoolbar.presentation.logic.AppToolbarViewModel
-import com.example.coffeepictures.app.navigator.AppScreenNavigator
+import com.example.coffeepictures.core.navigator.AppScreenNavigator
 import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
 
