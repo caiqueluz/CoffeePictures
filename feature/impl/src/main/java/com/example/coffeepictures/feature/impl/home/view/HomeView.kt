@@ -9,12 +9,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -23,7 +20,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
@@ -34,6 +30,7 @@ import com.example.coffeepictures.designsystem.CoffeePicturesPreview
 import com.example.coffeepictures.designsystem.CoilPreviewScope
 import com.example.coffeepictures.designsystem.component.DSButton
 import com.example.coffeepictures.designsystem.component.DSErrorMessageAlert
+import com.example.coffeepictures.designsystem.component.DSIconButton
 import com.example.coffeepictures.designsystem.component.DSLoading
 import com.example.coffeepictures.designsystem.core.DSSpacing
 import com.example.coffeepictures.feature.impl.R
@@ -85,30 +82,13 @@ private fun Toolbar(
         },
         actions = {
             if (isStarIconVisible) {
-                ToolbarIcon(
+                DSIconButton(
                     imageVector = Icons.Filled.Star,
                     onIconClicked = onToolbarStarIconClicked,
                 )
             }
         },
     )
-}
-
-@Composable
-private fun ToolbarIcon(
-    modifier: Modifier = Modifier,
-    imageVector: ImageVector,
-    onIconClicked: () -> Unit,
-) {
-    IconButton(
-        onClick = onIconClicked,
-    ) {
-        Icon(
-            modifier = modifier.size(16.dp),
-            imageVector = imageVector,
-            contentDescription = null,
-        )
-    }
 }
 
 @Composable
