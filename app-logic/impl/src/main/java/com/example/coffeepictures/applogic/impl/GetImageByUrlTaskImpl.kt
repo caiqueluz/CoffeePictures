@@ -7,7 +7,7 @@ import com.example.coffeepictures.infrastructure.database.api.ImagesDao
 class GetImageByUrlTaskImpl(
     private val imagesDao: ImagesDao,
 ) : GetImageByUrlTask {
-    override suspend fun get(url: String): Result<ImageModel> {
+    override suspend operator fun invoke(url: String): Result<ImageModel> {
         return try {
             val entity = imagesDao.getImageByUrl(url)
 

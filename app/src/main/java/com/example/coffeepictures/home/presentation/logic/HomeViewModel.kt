@@ -51,7 +51,7 @@ class HomeViewModel(
         updateViewState()
 
         viewModelScope.launch {
-            loadRandomImageTask.load()
+            loadRandomImageTask()
                 .onSuccess { imageModel = it }
                 .onFailure { errorThrowable = it }
 
@@ -63,7 +63,7 @@ class HomeViewModel(
         viewModelScope.launch {
             val imageUrl = requireNotNull(imageModel).url
 
-            addImageToFavoritesTask.add(imageUrl)
+            addImageToFavoritesTask(imageUrl)
                 .onSuccess {
                     reloadImageByUrl()
 
@@ -83,7 +83,7 @@ class HomeViewModel(
         viewModelScope.launch {
             val imageUrl = requireNotNull(imageModel).url
 
-            getImageByUrlTask.get(url = imageUrl)
+            getImageByUrlTask(url = imageUrl)
                 .onSuccess { imageModel = it }
                 .onFailure { errorThrowable = it }
 

@@ -6,7 +6,7 @@ import com.example.coffeepictures.applogic.api.ImageModel
 class LoadRandomImageTaskImpl(
     private val httpClient: ImagesHttpClient,
 ) : LoadRandomImageTask {
-    override suspend fun load(): Result<ImageModel> {
+    override suspend operator fun invoke(): Result<ImageModel> {
         return httpClient.loadRandomImage()
             .map { response ->
                 ImageModel(

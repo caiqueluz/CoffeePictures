@@ -52,7 +52,7 @@ class FavoritesViewModel(
         updateViewState()
 
         viewModelScope.launch {
-            loadAllFavoriteImagesTask.load()
+            loadAllFavoriteImagesTask()
                 .onSuccess { imageModels = it }
                 .onFailure { errorThrowable = it }
 

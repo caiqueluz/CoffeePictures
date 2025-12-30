@@ -6,7 +6,7 @@ import com.example.coffeepictures.applogic.api.ImageModel
 class FakeLoadAllFavoriteImagesTask : LoadAllFavoriteImagesTask {
     private var fakeResult: Result<List<ImageModel>>? = null
 
-    override suspend fun load(): Result<List<ImageModel>> {
+    override suspend operator fun invoke(): Result<List<ImageModel>> {
         if (fakeResult == null) AssertionError("No fake results registered.")
         return requireNotNull(fakeResult)
     }

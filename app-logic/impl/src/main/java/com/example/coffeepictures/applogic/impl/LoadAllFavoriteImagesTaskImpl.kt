@@ -7,7 +7,7 @@ import com.example.coffeepictures.infrastructure.database.api.ImagesDao
 class LoadAllFavoriteImagesTaskImpl(
     private val imagesDao: ImagesDao,
 ) : LoadAllFavoriteImagesTask {
-    override suspend fun load(): Result<List<ImageModel>> {
+    override suspend operator fun invoke(): Result<List<ImageModel>> {
         return try {
             val imageModels =
                 imagesDao
