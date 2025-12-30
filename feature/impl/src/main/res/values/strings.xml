@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="feedback_message_presenter_snackbar_dismiss_action_text">Dismiss</string>
+
     <string name="home_toolbar_title_text">Home</string>
     <string name="favorites_toolbar_title_text">Favorites</string>
 

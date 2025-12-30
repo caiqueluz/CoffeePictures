@@ -1,4 +1,4 @@
-package com.example.coffeepictures.app.app.presentation
+package com.example.coffeepictures.feature.impl.app
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
@@ -9,8 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.coffeepictures.app.app.FeedbackMessagePresenterEffect
-import com.example.coffeepictures.app.app.rememberSnackbarHostState
 import com.example.coffeepictures.common.ui.api.FeedbackMessagePresenter
 import com.example.coffeepictures.feature.api.AppToolbarEntrypoint
 import com.example.coffeepictures.feature.api.FavoritesEntrypoint

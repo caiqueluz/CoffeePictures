@@ -2,8 +2,9 @@ package com.example.coffeepictures.app
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.coffeepictures.app.app.presentation.AppHost
+import com.example.coffeepictures.feature.api.AppEntrypoint
 import org.koin.compose.KoinApplication
+import org.koin.compose.koinInject
 import org.koin.dsl.KoinAppDeclaration
 
 @Composable
@@ -16,9 +17,11 @@ fun App(
     KoinApplication(
         application = koinAppDeclaration,
     ) {
+        val appEntrypoint = koinInject<AppEntrypoint>()
+
         configureCoil()
 
-        AppHost(
+        appEntrypoint.Content(
             modifier = modifier,
             getTextValue = getTextValue,
         )

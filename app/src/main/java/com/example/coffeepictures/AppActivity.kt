@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import coil3.compose.setSingletonImageLoaderFactory
 import com.example.coffeepictures.app.App
-import com.example.coffeepictures.app.app.di.appModule
+import com.example.coffeepictures.app.appModule
 import com.example.coffeepictures.core.coffeePicturesApplication
 import com.example.coffeepictures.core.setCoffeePicturesContent
 import com.example.coffeepictures.infrastructure.api.CoilImageLoaderFactory

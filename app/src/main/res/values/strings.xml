@@ -1,4 +1,3 @@
 <resources>
     <string name="app_name">CoffeePictures</string>
-    <string name="feedback_message_presenter_snackbar_dismiss_action_text">Dismiss</string>
 </resources>

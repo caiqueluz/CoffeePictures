@@ -1,4 +1,4 @@
-package com.example.coffeepictures.app.app
+package com.example.coffeepictures.feature.impl.app
 
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable

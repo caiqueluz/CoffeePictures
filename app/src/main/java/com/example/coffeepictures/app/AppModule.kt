@@ -1,4 +1,4 @@
-package com.example.coffeepictures.app.app.di
+package com.example.coffeepictures.app
 
 import com.example.coffeepictures.AppDependencies
 import com.example.coffeepictures.applogic.di.appLogicModule

@@ -1,4 +1,4 @@
-package com.example.coffeepictures.app.app
+package com.example.coffeepictures.feature.impl.app
 
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHostState
@@ -9,7 +9,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.flowWithLifecycle
 import com.example.coffeepictures.common.ui.api.FeedbackMessagePresenter
-import com.example.coffeepictures.common.ui.impl.R
+import com.example.coffeepictures.feature.impl.R
 import kotlinx.coroutines.flow.receiveAsFlow
 
 @Composable
