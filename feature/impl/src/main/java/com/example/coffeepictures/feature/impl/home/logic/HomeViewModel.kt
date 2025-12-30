@@ -7,6 +7,7 @@ import com.example.coffeepictures.applogic.api.LoadRandomImageTask
 import com.example.coffeepictures.applogic.api.ImageModel
 import com.example.coffeepictures.common.ui.api.FeedbackMessagePresenter
 import com.example.coffeepictures.feature.impl.R
+import com.example.coffeepictures.navigator.AppScreenNavigator
 import com.example.coffeepictures.viewmodel.BasicViewModel
 import kotlinx.coroutines.launch
 
@@ -14,6 +15,7 @@ class HomeViewModel(
     private val loadRandomImageTask: LoadRandomImageTask,
     private val getImageByUrlTask: GetImageByUrlTask,
     private val addImageToFavoritesTask: AddImageToFavoritesTask,
+    private val appScreenNavigator: AppScreenNavigator,
     private val feedbackMessagePresenter: FeedbackMessagePresenter,
 ) : BasicViewModel<HomeViewState>() {
     private var imageModel: ImageModel? = null
@@ -34,6 +36,10 @@ class HomeViewModel(
 
     fun onHomeStarted() {
         loadRandomImage()
+    }
+
+    fun onToolbarStarIconClicked() {
+        appScreenNavigator.navigateToFavorites()
     }
 
     fun onLoadNewButtonClicked() {

@@ -9,11 +9,21 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
@@ -33,21 +43,67 @@ import com.example.coffeepictures.feature.impl.home.logic.HomeViewState
 fun HomeView(
     modifier: Modifier = Modifier,
     viewState: HomeViewState,
+    onToolbarStarIconClicked: () -> Unit,
     onLoadNewButtonClicked: () -> Unit,
     onAddToFavoritesButtonClicked: () -> Unit,
 ) {
-    // TODO - add toobar.
+    Scaffold(
+        topBar = {
+            Toolbar(
+                onToolbarStarIconClicked = onToolbarStarIconClicked,
+            )
+        },
+    ) {
+        Content(
+            modifier = modifier.padding(all = DSSpacing.medium),
+            isLoadingVisible = viewState.isLoadingVisible,
+            isErrorVisible = viewState.isErrorVisible,
+            imageUrl = viewState.imageUrl,
+            isLoadNewButtonEnabled = viewState.isLoadNewButtonEnabled,
+            isAddToFavoritesButtonEnabled = viewState.isAddToFavoritesButtonEnabled,
+            onLoadNewButtonClicked = onLoadNewButtonClicked,
+            onAddToFavoritesButtonClicked = onAddToFavoritesButtonClicked,
+        )
+    }
+}
 
-    Content(
-        modifier = modifier.padding(all = DSSpacing.medium),
-        isLoadingVisible = viewState.isLoadingVisible,
-        isErrorVisible = viewState.isErrorVisible,
-        imageUrl = viewState.imageUrl,
-        isLoadNewButtonEnabled = viewState.isLoadNewButtonEnabled,
-        isAddToFavoritesButtonEnabled = viewState.isAddToFavoritesButtonEnabled,
-        onLoadNewButtonClicked = onLoadNewButtonClicked,
-        onAddToFavoritesButtonClicked = onAddToFavoritesButtonClicked,
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun Toolbar(
+    modifier: Modifier = Modifier,
+    onToolbarStarIconClicked: () -> Unit,
+) {
+    TopAppBar(
+        modifier = modifier,
+        title = {
+            Text(
+                text = stringResource(id = R.string.home_toolbar_title_text),
+            )
+        },
+        actions = {
+            ToolbarIcon(
+                imageVector = Icons.Filled.Star,
+                onIconClicked = onToolbarStarIconClicked,
+            )
+        },
     )
+}
+
+@Composable
+private fun ToolbarIcon(
+    modifier: Modifier = Modifier,
+    imageVector: ImageVector,
+    onIconClicked: () -> Unit,
+) {
+    IconButton(
+        onClick = onIconClicked,
+    ) {
+        Icon(
+            modifier = modifier.size(16.dp),
+            imageVector = imageVector,
+            contentDescription = null,
+        )
+    }
 }
 
 @Composable
@@ -210,6 +266,7 @@ private fun HomeViewPreview(
             HomeView(
                 modifier = Modifier.fillMaxSize(),
                 viewState = viewState,
+                onToolbarStarIconClicked = {},
                 onLoadNewButtonClicked = {},
                 onAddToFavoritesButtonClicked = {},
             )

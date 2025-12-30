@@ -59,6 +59,7 @@ fun AppHost(
                 is Home -> {
                     homeEntrypoint.Content(
                         modifier = modifier,
+                        appScreenNavigator = appScreenNavigator,
                     )
                 }
 
