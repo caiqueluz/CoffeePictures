@@ -1,9 +1,9 @@
 package com.example.coffeepictures
 
 import com.example.coffeepictures.app.app.presentation.AppScreenModel
-import com.example.coffeepictures.app.apptoolbar.presentation.logic.AppToolbarActionModel
-import com.example.coffeepictures.app.apptoolbar.presentation.logic.AppToolbarViewModel
-import com.example.coffeepictures.app.apptoolbar.presentation.logic.AppToolbarViewState
+import com.example.coffeepictures.apptoolbar.presentation.logic.AppToolbarActionModel
+import com.example.coffeepictures.apptoolbar.presentation.logic.AppToolbarViewModel
+import com.example.coffeepictures.apptoolbar.presentation.logic.AppToolbarViewState
 import com.example.coffeepictures.core.FakeAppScreenNavigator
 import com.example.coffeepictures.core.TestCoroutinesRule
 import kotlinx.coroutines.test.runTest

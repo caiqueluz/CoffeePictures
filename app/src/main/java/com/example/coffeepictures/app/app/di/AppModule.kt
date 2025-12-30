@@ -1,7 +1,7 @@
 package com.example.coffeepictures.app.app.di
 
 import com.example.coffeepictures.AppDependencies
-import com.example.coffeepictures.app.apptoolbar.di.appToolbarModule
+import com.example.coffeepictures.apptoolbar.di.appToolbarModule
 import com.example.coffeepictures.applogic.di.appLogicModule
 import com.example.coffeepictures.common.ui.di.commonUiModule
 import com.example.coffeepictures.core.compositeModule

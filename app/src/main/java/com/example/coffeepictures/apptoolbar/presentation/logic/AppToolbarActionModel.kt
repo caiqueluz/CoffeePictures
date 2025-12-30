@@ -1,4 +1,4 @@
-package com.example.coffeepictures.app.apptoolbar.presentation.logic
+package com.example.coffeepictures.apptoolbar.presentation.logic
 
 import com.example.coffeepictures.app.app.presentation.AppScreenModel
 import com.example.coffeepictures.app.app.presentation.AppScreenModel.Favorites

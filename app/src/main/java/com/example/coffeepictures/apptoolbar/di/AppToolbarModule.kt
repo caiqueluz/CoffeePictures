@@ -1,6 +1,6 @@
-package com.example.coffeepictures.app.apptoolbar.di
+package com.example.coffeepictures.apptoolbar.di
 
-import com.example.coffeepictures.app.apptoolbar.presentation.logic.AppToolbarViewModel
+import com.example.coffeepictures.apptoolbar.presentation.logic.AppToolbarViewModel
 import org.koin.core.module.dsl.viewModelOf
 import org.koin.dsl.module
 

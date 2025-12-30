@@ -1,4 +1,4 @@
-package com.example.coffeepictures.app.apptoolbar.presentation.logic
+package com.example.coffeepictures.apptoolbar.presentation.logic
 
 import androidx.lifecycle.viewModelScope
 import com.example.coffeepictures.R

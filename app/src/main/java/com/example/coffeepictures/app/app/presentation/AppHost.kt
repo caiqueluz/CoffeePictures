@@ -13,7 +13,7 @@ import com.example.coffeepictures.app.app.FeedbackMessagePresenterEffect
 import com.example.coffeepictures.app.app.presentation.AppScreenModel.Favorites
 import com.example.coffeepictures.app.app.presentation.AppScreenModel.Home
 import com.example.coffeepictures.app.app.rememberSnackbarHostState
-import com.example.coffeepictures.app.apptoolbar.presentation.view.AppToolbarHost
+import com.example.coffeepictures.apptoolbar.presentation.view.AppToolbarHost
 import com.example.coffeepictures.app.navigator.rememberAppScreenNavigator
 import com.example.coffeepictures.common.ui.api.FeedbackMessagePresenter
 import com.example.coffeepictures.favorites.presentation.view.FavoritesHost
