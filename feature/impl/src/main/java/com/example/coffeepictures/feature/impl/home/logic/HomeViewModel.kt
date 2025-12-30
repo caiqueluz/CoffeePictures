@@ -1,12 +1,12 @@
-package com.example.coffeepictures.home.presentation.logic
+package com.example.coffeepictures.feature.impl.home.logic
 
 import androidx.lifecycle.viewModelScope
-import com.example.coffeepictures.R
 import com.example.coffeepictures.applogic.api.AddImageToFavoritesTask
 import com.example.coffeepictures.applogic.api.GetImageByUrlTask
 import com.example.coffeepictures.applogic.api.LoadRandomImageTask
 import com.example.coffeepictures.applogic.api.ImageModel
 import com.example.coffeepictures.common.ui.api.FeedbackMessagePresenter
+import com.example.coffeepictures.feature.impl.R
 import com.example.coffeepictures.viewmodel.BasicViewModel
 import kotlinx.coroutines.launch
 

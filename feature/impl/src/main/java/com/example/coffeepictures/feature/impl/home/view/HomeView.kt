@@ -1,4 +1,4 @@
-package com.example.coffeepictures.home.presentation.view
+package com.example.coffeepictures.feature.impl.home.view
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -20,14 +20,14 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.example.coffeepictures.R
 import com.example.coffeepictures.designsystem.CoffeePicturesPreview
 import com.example.coffeepictures.designsystem.CoilPreviewScope
 import com.example.coffeepictures.designsystem.component.DSButton
 import com.example.coffeepictures.designsystem.component.DSErrorMessageAlert
 import com.example.coffeepictures.designsystem.component.DSLoading
 import com.example.coffeepictures.designsystem.core.DSSpacing
-import com.example.coffeepictures.home.presentation.logic.HomeViewState
+import com.example.coffeepictures.feature.impl.R
+import com.example.coffeepictures.feature.impl.home.logic.HomeViewState
 
 @Composable
 fun HomeView(

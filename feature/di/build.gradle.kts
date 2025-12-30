@@ -30,6 +30,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":common:ui:api"))
     implementation(project(":common:navigator"))
     implementation(project(":common:view-model"))
     implementation(project(":app-logic:api"))

@@ -1,4 +1,4 @@
-package com.example.coffeepictures.home.presentation.logic
+package com.example.coffeepictures.feature.impl.home.logic
 
 data class HomeViewState(
     val isLoadingVisible: Boolean,

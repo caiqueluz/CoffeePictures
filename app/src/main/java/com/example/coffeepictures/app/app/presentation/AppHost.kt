@@ -14,7 +14,7 @@ import com.example.coffeepictures.app.app.rememberSnackbarHostState
 import com.example.coffeepictures.common.ui.api.FeedbackMessagePresenter
 import com.example.coffeepictures.feature.api.AppToolbarEntrypoint
 import com.example.coffeepictures.feature.api.FavoritesEntrypoint
-import com.example.coffeepictures.home.presentation.view.HomeHost
+import com.example.coffeepictures.feature.api.HomeEntrypoint
 import com.example.coffeepictures.navigator.AppScreenModel.Favorites
 import com.example.coffeepictures.navigator.AppScreenModel.Home
 import com.example.coffeepictures.navigator.rememberAppScreenNavigator
@@ -30,6 +30,7 @@ fun AppHost(
     val snackbarHostState = rememberSnackbarHostState()
     val feedbackMessagePresenter = koinInject<FeedbackMessagePresenter>()
     val appToolbarEntrypoint = koinInject<AppToolbarEntrypoint>()
+    val homeEntrypoint = koinInject<HomeEntrypoint>()
     val favoritesEntrypoint = koinInject<FavoritesEntrypoint>()
 
     FeedbackMessagePresenterEffect(
@@ -58,7 +59,9 @@ fun AppHost(
         ) {
             when (appScreenModel) {
                 is Home -> {
-                    HomeHost()
+                    homeEntrypoint.Content(
+                        modifier = modifier,
+                    )
                 }
 
                 is Favorites -> {
