@@ -1,15 +1,15 @@
 package com.example.coffeepictures.applogic.impl
 
 import com.example.coffeepictures.applogic.api.LoadRandomImageTask
-import com.example.coffeepictures.applogic.api.RandomImageModel
+import com.example.coffeepictures.applogic.api.ImageModel
 
 class LoadRandomImageTaskImpl(
-    private val httpClient: RandomImagesHttpClient,
+    private val httpClient: ImagesHttpClient,
 ) : LoadRandomImageTask {
-    override suspend fun load(): Result<RandomImageModel> {
+    override suspend fun load(): Result<ImageModel> {
         return httpClient.loadRandomImage()
             .map { response ->
-                RandomImageModel(
+                ImageModel(
                     url = response.url,
                     isFavorite = false,
                 )

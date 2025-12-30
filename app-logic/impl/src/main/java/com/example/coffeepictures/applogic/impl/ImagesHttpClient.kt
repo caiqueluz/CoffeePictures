@@ -1,11 +1,11 @@
 package com.example.coffeepictures.applogic.impl
 
-class RandomImagesHttpClient(
-    private val randomImagesRetrofitClient: RandomImagesRetrofitClient,
+class ImagesHttpClient(
+    private val imagesRetrofitClient: ImagesRetrofitClient,
 ) {
-    suspend fun loadRandomImage(): Result<RandomImageResponse> {
+    suspend fun loadRandomImage(): Result<ImageResponse> {
         return try {
-            val response = randomImagesRetrofitClient.loadRandomImage()
+            val response = imagesRetrofitClient.loadRandomImage()
             val body = response.body()
             val model = requireNotNull(body)
 

@@ -1,6 +1,6 @@
 package com.example.coffeepictures.applogic.api
 
-data class RandomImageModel(
+data class ImageModel(
     val url: String,
     val isFavorite: Boolean,
 )

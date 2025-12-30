@@ -8,8 +8,8 @@ import com.example.coffeepictures.applogic.impl.AddImageToFavoritesTaskImpl
 import com.example.coffeepictures.applogic.impl.GetImageByUrlTaskImpl
 import com.example.coffeepictures.applogic.impl.LoadAllFavoriteImagesTaskImpl
 import com.example.coffeepictures.applogic.impl.LoadRandomImageTaskImpl
-import com.example.coffeepictures.applogic.impl.RandomImagesHttpClient
-import com.example.coffeepictures.applogic.impl.RandomImagesRetrofitClient
+import com.example.coffeepictures.applogic.impl.ImagesHttpClient
+import com.example.coffeepictures.applogic.impl.ImagesRetrofitClient
 import com.example.coffeepictures.infrastructure.network.api.RetrofitHttpClientFactory
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.bind
@@ -17,12 +17,12 @@ import org.koin.dsl.module
 
 val appLogicModule =
     module {
-        factory<RandomImagesRetrofitClient> {
+        factory<ImagesRetrofitClient> {
             get<RetrofitHttpClientFactory>()
-                .create(RandomImagesRetrofitClient::class)
+                .create(ImagesRetrofitClient::class)
         }
 
-        factoryOf(::RandomImagesHttpClient)
+        factoryOf(::ImagesHttpClient)
         factoryOf(::LoadAllFavoriteImagesTaskImpl).bind<LoadAllFavoriteImagesTask>()
         factoryOf(::LoadRandomImageTaskImpl).bind<LoadRandomImageTask>()
         factoryOf(::AddImageToFavoritesTaskImpl).bind<AddImageToFavoritesTask>()

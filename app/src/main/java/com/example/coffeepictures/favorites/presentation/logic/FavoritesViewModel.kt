@@ -3,7 +3,7 @@ package com.example.coffeepictures.favorites.presentation.logic
 import androidx.lifecycle.viewModelScope
 import com.example.coffeepictures.app.navigator.AppScreenNavigator
 import com.example.coffeepictures.applogic.api.LoadAllFavoriteImagesTask
-import com.example.coffeepictures.applogic.api.RandomImageModel
+import com.example.coffeepictures.applogic.api.ImageModel
 import com.example.coffeepictures.viewmodel.BasicViewModel
 import kotlinx.coroutines.launch
 
@@ -11,15 +11,15 @@ class FavoritesViewModel(
     private val loadAllFavoriteImagesTask: LoadAllFavoriteImagesTask,
     private val appScreenNavigator: AppScreenNavigator,
 ) : BasicViewModel<FavoritesViewState>() {
-    private var randomImageModels = listOf<RandomImageModel>()
+    private var imageModels = listOf<ImageModel>()
     private var errorThrowable: Throwable? = null
 
     override fun createViewState(): FavoritesViewState {
         return FavoritesViewState(
-            isLoadingVisible = randomImageModels.isEmpty() && errorThrowable == null,
-            isErrorVisible = randomImageModels.isEmpty() && errorThrowable != null,
+            isLoadingVisible = imageModels.isEmpty() && errorThrowable == null,
+            isErrorVisible = imageModels.isEmpty() && errorThrowable != null,
             imageModels =
-                randomImageModels
+                imageModels
                     .takeIf { it.isNotEmpty() && errorThrowable == null }
                     ?.map(::createFavoriteImageModel)
                     .orEmpty(),
@@ -34,26 +34,26 @@ class FavoritesViewModel(
         appScreenNavigator.navigateBackToHome()
     }
 
-    private fun createFavoriteImageModel(randomImageModel: RandomImageModel): FavoriteImageModel {
+    private fun createFavoriteImageModel(imageModel: ImageModel): FavoriteImageModel {
         return FavoriteImageModel(
             /**
              * Use the model url as both the title text and the url,
              * but don't expose this logic to the view.
              */
-            titleText = randomImageModel.url,
-            url = randomImageModel.url,
+            titleText = imageModel.url,
+            url = imageModel.url,
         )
     }
 
     private fun loadAllFavoriteImages() {
-        randomImageModels = emptyList()
+        imageModels = emptyList()
         errorThrowable = null
 
         updateViewState()
 
         viewModelScope.launch {
             loadAllFavoriteImagesTask.load()
-                .onSuccess { randomImageModels = it }
+                .onSuccess { imageModels = it }
                 .onFailure { errorThrowable = it }
 
             updateViewState()

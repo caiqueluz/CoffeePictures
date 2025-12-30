@@ -5,7 +5,7 @@ import com.example.coffeepictures.R
 import com.example.coffeepictures.applogic.api.AddImageToFavoritesTask
 import com.example.coffeepictures.applogic.api.GetImageByUrlTask
 import com.example.coffeepictures.applogic.api.LoadRandomImageTask
-import com.example.coffeepictures.applogic.api.RandomImageModel
+import com.example.coffeepictures.applogic.api.ImageModel
 import com.example.coffeepictures.common.ui.api.FeedbackMessagePresenter
 import com.example.coffeepictures.viewmodel.BasicViewModel
 import kotlinx.coroutines.launch
@@ -16,19 +16,19 @@ class HomeViewModel(
     private val addImageToFavoritesTask: AddImageToFavoritesTask,
     private val feedbackMessagePresenter: FeedbackMessagePresenter,
 ) : BasicViewModel<HomeViewState>() {
-    private var randomImageModel: RandomImageModel? = null
+    private var imageModel: ImageModel? = null
     private var errorThrowable: Throwable? = null
 
     override fun createViewState(): HomeViewState {
         return HomeViewState(
-            isLoadingVisible = randomImageModel == null && errorThrowable == null,
-            isErrorVisible = randomImageModel == null && errorThrowable != null,
+            isLoadingVisible = imageModel == null && errorThrowable == null,
+            isErrorVisible = imageModel == null && errorThrowable != null,
             imageUrl =
-                randomImageModel
+                imageModel
                     .takeIf { it != null && errorThrowable == null }
                     ?.url,
-            isLoadNewButtonEnabled = randomImageModel != null || errorThrowable != null,
-            isAddToFavoritesButtonEnabled = randomImageModel != null && randomImageModel?.isFavorite == false && errorThrowable == null,
+            isLoadNewButtonEnabled = imageModel != null || errorThrowable != null,
+            isAddToFavoritesButtonEnabled = imageModel != null && imageModel?.isFavorite == false && errorThrowable == null,
         )
     }
 
@@ -45,14 +45,14 @@ class HomeViewModel(
     }
 
     private fun loadRandomImage() {
-        randomImageModel = null
+        imageModel = null
         errorThrowable = null
 
         updateViewState()
 
         viewModelScope.launch {
             loadRandomImageTask.load()
-                .onSuccess { randomImageModel = it }
+                .onSuccess { imageModel = it }
                 .onFailure { errorThrowable = it }
 
             updateViewState()
@@ -61,7 +61,7 @@ class HomeViewModel(
 
     private fun addImageToFavorites() {
         viewModelScope.launch {
-            val imageUrl = requireNotNull(randomImageModel).url
+            val imageUrl = requireNotNull(imageModel).url
 
             addImageToFavoritesTask.add(imageUrl)
                 .onSuccess {
@@ -81,10 +81,10 @@ class HomeViewModel(
 
     private fun reloadImageByUrl() {
         viewModelScope.launch {
-            val imageUrl = requireNotNull(randomImageModel).url
+            val imageUrl = requireNotNull(imageModel).url
 
             getImageByUrlTask.get(url = imageUrl)
-                .onSuccess { randomImageModel = it }
+                .onSuccess { imageModel = it }
                 .onFailure { errorThrowable = it }
 
             updateViewState()

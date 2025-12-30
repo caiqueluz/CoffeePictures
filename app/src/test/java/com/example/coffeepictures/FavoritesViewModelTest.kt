@@ -1,7 +1,7 @@
 package com.example.coffeepictures
 
 import com.example.coffeepictures.app.app.presentation.AppScreenModel
-import com.example.coffeepictures.applogic.api.RandomImageModel
+import com.example.coffeepictures.applogic.api.ImageModel
 import com.example.coffeepictures.core.FakeAppScreenNavigator
 import com.example.coffeepictures.core.TestCoroutinesRule
 import com.example.coffeepictures.core.applogic.FakeLoadAllFavoriteImagesTask
@@ -43,15 +43,15 @@ class FavoritesViewModelTest {
                 )
 
             listOf(
-                RandomImageModel(
+                ImageModel(
                     url = "example.com/1.png",
                     isFavorite = false,
                 ),
-                RandomImageModel(
+                ImageModel(
                     url = "example.com/2.png",
                     isFavorite = false,
                 ),
-                RandomImageModel(
+                ImageModel(
                     url = "example.com/3.png",
                     isFavorite = false,
                 ),
