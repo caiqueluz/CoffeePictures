@@ -2,4 +2,6 @@
 <resources>
     <string name="home_toolbar_title_text">Home</string>
     <string name="favorites_toolbar_title_text">Favorites</string>
+
+    <string name="favorites_error_text">Could not load the favorite images. Sorry! :(</string>
 </resources>

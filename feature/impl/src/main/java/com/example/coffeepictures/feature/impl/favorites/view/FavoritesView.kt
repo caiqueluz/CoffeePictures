@@ -1,4 +1,4 @@
-package com.example.coffeepictures.favorites.presentation.view
+package com.example.coffeepictures.feature.impl.favorites.view
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,14 +21,14 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import com.example.coffeepictures.R
 import com.example.coffeepictures.designsystem.CoffeePicturesPreview
 import com.example.coffeepictures.designsystem.CoilPreviewScope
 import com.example.coffeepictures.designsystem.component.DSErrorMessageAlert
 import com.example.coffeepictures.designsystem.component.DSLoading
 import com.example.coffeepictures.designsystem.core.DSSpacing
-import com.example.coffeepictures.favorites.presentation.logic.FavoriteImageModel
-import com.example.coffeepictures.favorites.presentation.logic.FavoritesViewState
+import com.example.coffeepictures.feature.impl.R
+import com.example.coffeepictures.feature.impl.favorites.logic.FavoriteImageModel
+import com.example.coffeepictures.feature.impl.favorites.logic.FavoritesViewState
 
 @Composable
 fun FavoritesView(

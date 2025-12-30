@@ -32,6 +32,7 @@ android {
 dependencies {
     implementation(project(":common:navigator"))
     implementation(project(":common:view-model"))
+    implementation(project(":app-logic:api"))
     implementation(project(":feature:api"))
     implementation(project(":feature:impl"))
 

@@ -7,6 +7,4 @@
     <string name="home_error_text">Could not load the image. Sorry! :(</string>
     <string name="home_add_image_to_favorites_feedback_success_message_text">Image added to favorites!</string>
     <string name="home_add_image_to_favorites_feedback_error_message_text">Could not add image to favorites. Sorry! :(</string>
-
-    <string name="favorites_error_text">Could not load the favorite images. Sorry! :(</string>
 </resources>

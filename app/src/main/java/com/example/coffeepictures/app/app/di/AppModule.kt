@@ -4,7 +4,6 @@ import com.example.coffeepictures.AppDependencies
 import com.example.coffeepictures.applogic.di.appLogicModule
 import com.example.coffeepictures.common.ui.di.commonUiModule
 import com.example.coffeepictures.core.compositeModule
-import com.example.coffeepictures.favorites.di.favoritesModule
 import com.example.coffeepictures.feature.di.featureModule
 import com.example.coffeepictures.home.di.homeModule
 import com.example.coffeepictures.infrastructure.database.di.databaseModule
@@ -20,5 +19,4 @@ fun appModule(appDependencies: AppDependencies) =
         appLogicModule,
         featureModule,
         homeModule,
-        favoritesModule,
     )

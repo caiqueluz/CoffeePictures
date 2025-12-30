@@ -1,4 +1,4 @@
-package com.example.coffeepictures.favorites.presentation.logic
+package com.example.coffeepictures.feature.impl.favorites.logic
 
 data class FavoritesViewState(
     val isLoadingVisible: Boolean,
