@@ -14,6 +14,15 @@ interface ImagesDao {
     @Query("DELETE FROM images")
     suspend fun deleteAllFavorites()
 
+    @Query(
+        value =
+            """
+                DELETE FROM images
+                WHERE url = :url
+            """,
+    )
+    suspend fun deleteFavoriteByUrl(url: String)
+
     @Query("SELECT EXISTS(SELECT 1 FROM images)")
     fun getFavoritesPresenceStatusFlow(): Flow<Boolean>
 
