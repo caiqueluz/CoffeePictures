@@ -35,7 +35,6 @@ import com.example.coffeepictures.designsystem.component.DSIconButton
 import com.example.coffeepictures.designsystem.component.DSLoading
 import com.example.coffeepictures.designsystem.core.DSSpacing
 import com.example.coffeepictures.feature.impl.R
-import com.example.coffeepictures.feature.impl.favorites.list.logic.FavoriteImageModel
 import com.example.coffeepictures.feature.impl.favorites.list.logic.FavoritesListViewState
 
 @Composable
@@ -59,7 +58,7 @@ fun FavoritesListView(
             modifier = Modifier.padding(innerPadding),
             isLoadingVisible = viewState.isLoadingVisible,
             isErrorVisible = viewState.isErrorVisible,
-            imageModels = viewState.imageModels,
+            imageUrls = viewState.imageUrls,
             onItemClicked = onItemClicked,
         )
     }
@@ -99,7 +98,7 @@ private fun Content(
     modifier: Modifier = Modifier,
     isLoadingVisible: Boolean,
     isErrorVisible: Boolean,
-    imageModels: List<FavoriteImageModel>,
+    imageUrls: List<String>,
     onItemClicked: (Int) -> Unit,
 ) {
     Box(
@@ -120,7 +119,7 @@ private fun Content(
 
         List(
             modifier = Modifier.fillMaxSize(),
-            imageModels = imageModels,
+            imageUrls = imageUrls,
             onItemClicked = onItemClicked,
         )
     }
@@ -176,22 +175,22 @@ private fun LoadingItem(
 @Composable
 private fun List(
     modifier: Modifier = Modifier,
-    imageModels: List<FavoriteImageModel>,
+    imageUrls: List<String>,
     onItemClicked: (Int) -> Unit,
 ) {
     LazyColumn(
         modifier = modifier,
     ) {
-        itemsIndexed(imageModels) { index, model ->
+        itemsIndexed(imageUrls) { index, url ->
             FavoriteImageItem(
                 modifier =
                     Modifier.clickable {
                         onItemClicked(index)
                     },
-                model = model,
+                url = url,
             )
 
-            if (index < imageModels.size.dec()) {
+            if (index < imageUrls.size.dec()) {
                 Spacer(
                     modifier = Modifier.height(DSSpacing.medium),
                 )
@@ -203,24 +202,16 @@ private fun List(
 @Composable
 private fun FavoriteImageItem(
     modifier: Modifier = Modifier,
-    model: FavoriteImageModel,
+    url: String,
 ) {
-    Column(
-        modifier = modifier,
-    ) {
-        Text(
-            text = model.titleText,
-        )
-
-        AsyncImage(
-            modifier =
-                Modifier
-                    .fillMaxWidth()
-                    .height(300.dp),
-            model = model.url,
-            contentDescription = null,
-        )
-    }
+    AsyncImage(
+        modifier =
+            modifier
+                .fillMaxWidth()
+                .height(300.dp),
+        model = url,
+        contentDescription = null,
+    )
 }
 
 private class FavoritesListViewPreviewProvider : PreviewParameterProvider<FavoritesListViewState> {
@@ -230,32 +221,23 @@ private class FavoritesListViewPreviewProvider : PreviewParameterProvider<Favori
             FavoritesListViewState(
                 isLoadingVisible = true,
                 isErrorVisible = false,
-                imageModels = emptyList(),
+                imageUrls = emptyList(),
             ),
             // Error.
             FavoritesListViewState(
                 isLoadingVisible = false,
                 isErrorVisible = true,
-                imageModels = emptyList(),
+                imageUrls = emptyList(),
             ),
             // Success.
             FavoritesListViewState(
                 isLoadingVisible = false,
                 isErrorVisible = false,
-                imageModels =
+                imageUrls =
                     listOf(
-                        FavoriteImageModel(
-                            titleText = "example.com/1.png",
-                            url = "example.com/1.png",
-                        ),
-                        FavoriteImageModel(
-                            titleText = "example.com/2.png",
-                            url = "example.com/2.png",
-                        ),
-                        FavoriteImageModel(
-                            titleText = "example.com/3.png",
-                            url = "example.com/3.png",
-                        )
+                        "example.com/1.png",
+                        "example.com/2.png",
+                        "example.com/3.png",
                     ),
             ),
         )

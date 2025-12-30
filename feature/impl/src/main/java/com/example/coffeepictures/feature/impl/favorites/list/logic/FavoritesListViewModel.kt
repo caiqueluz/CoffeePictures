@@ -2,8 +2,8 @@ package com.example.coffeepictures.feature.impl.favorites.list.logic
 
 import androidx.lifecycle.viewModelScope
 import com.example.coffeepictures.applogic.api.DeleteAllFavoritesTask
-import com.example.coffeepictures.applogic.api.LoadAllFavoriteImagesTask
 import com.example.coffeepictures.applogic.api.ImageModel
+import com.example.coffeepictures.applogic.api.LoadAllFavoriteImagesTask
 import com.example.coffeepictures.common.ui.api.FeedbackMessagePresenter
 import com.example.coffeepictures.feature.impl.R
 import com.example.coffeepictures.feature.impl.favorites.navigator.FavoritesScreenNavigator
@@ -25,10 +25,10 @@ class FavoritesListViewModel(
         return FavoritesListViewState(
             isLoadingVisible = imageModels.isEmpty() && errorThrowable == null,
             isErrorVisible = imageModels.isEmpty() && errorThrowable != null,
-            imageModels =
+            imageUrls =
                 imageModels
                     .takeIf { it.isNotEmpty() && errorThrowable == null }
-                    ?.map(::createFavoriteImageModel)
+                    ?.map { it.url }
                     .orEmpty(),
         )
     }
@@ -52,17 +52,6 @@ class FavoritesListViewModel(
     fun onItemClicked(index: Int) {
         val itemModel = imageModels[index]
         favoritesScreenNavigator.navigateToDetail(imageUrl = itemModel.url)
-    }
-
-    private fun createFavoriteImageModel(imageModel: ImageModel): FavoriteImageModel {
-        return FavoriteImageModel(
-            /**
-             * Use the model url as both the title text and the url,
-             * but don't expose this logic to the view.
-             */
-            titleText = imageModel.url,
-            url = imageModel.url,
-        )
     }
 
     private fun loadAllFavoriteImages() {
