@@ -2,10 +2,10 @@ package com.example.coffeepictures.apptoolbar.presentation.logic
 
 import androidx.lifecycle.viewModelScope
 import com.example.coffeepictures.R
-import com.example.coffeepictures.app.app.presentation.AppScreenModel.Favorites
-import com.example.coffeepictures.app.app.presentation.AppScreenModel.Home
-import com.example.coffeepictures.core.navigator.AppScreenNavigator
-import com.example.coffeepictures.core.navigator.currentModel
+import com.example.coffeepictures.navigator.AppScreenModel.Favorites
+import com.example.coffeepictures.navigator.AppScreenModel.Home
+import com.example.coffeepictures.navigator.AppScreenNavigator
+import com.example.coffeepictures.navigator.currentModel
 import com.example.coffeepictures.viewmodel.BasicViewModel
 import kotlinx.coroutines.launch
 

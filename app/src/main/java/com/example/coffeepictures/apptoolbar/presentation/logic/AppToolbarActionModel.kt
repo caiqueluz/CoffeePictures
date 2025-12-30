@@ -1,8 +1,8 @@
 package com.example.coffeepictures.apptoolbar.presentation.logic
 
-import com.example.coffeepictures.app.app.presentation.AppScreenModel
-import com.example.coffeepictures.app.app.presentation.AppScreenModel.Favorites
-import com.example.coffeepictures.app.app.presentation.AppScreenModel.Home
+import com.example.coffeepictures.navigator.AppScreenModel
+import com.example.coffeepictures.navigator.AppScreenModel.Home
+import com.example.coffeepictures.navigator.AppScreenModel.Favorites
 
 enum class AppToolbarActionModel {
     FAVORITES;
