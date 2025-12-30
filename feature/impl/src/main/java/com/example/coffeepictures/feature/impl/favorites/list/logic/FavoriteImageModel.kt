@@ -1,4 +1,4 @@
-package com.example.coffeepictures.feature.impl.favorites.logic
+package com.example.coffeepictures.feature.impl.favorites.list.logic
 
 data class FavoriteImageModel(
     val titleText: String,

@@ -1,4 +1,4 @@
-package com.example.coffeepictures.feature.impl.favorites.view
+package com.example.coffeepictures.feature.impl.favorites.list.view
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -37,13 +37,13 @@ import com.example.coffeepictures.designsystem.component.DSErrorMessageAlert
 import com.example.coffeepictures.designsystem.component.DSLoading
 import com.example.coffeepictures.designsystem.core.DSSpacing
 import com.example.coffeepictures.feature.impl.R
-import com.example.coffeepictures.feature.impl.favorites.logic.FavoriteImageModel
-import com.example.coffeepictures.feature.impl.favorites.logic.FavoritesViewState
+import com.example.coffeepictures.feature.impl.favorites.list.logic.FavoriteImageModel
+import com.example.coffeepictures.feature.impl.favorites.list.logic.FavoritesListViewState
 
 @Composable
-fun FavoritesView(
+fun FavoritesListView(
     modifier: Modifier = Modifier,
-    viewState: FavoritesViewState,
+    viewState: FavoritesListViewState,
     onToolbarBackIconClicked: () -> Unit,
     onToolbarDeleteIconClicked: () -> Unit,
 ) {
@@ -76,7 +76,7 @@ private fun Toolbar(
         modifier = modifier,
         title = {
             Text(
-                text = stringResource(id = R.string.favorites_toolbar_title_text),
+                text = stringResource(id = R.string.favorites_list_toolbar_title_text),
             )
         },
         navigationIcon = {
@@ -130,7 +130,7 @@ private fun Content(
         if (isErrorVisible) {
             DSErrorMessageAlert(
                 modifier = Modifier.fillMaxSize(),
-                text = stringResource(id = R.string.favorites_error_text),
+                text = stringResource(id = R.string.favorites_list_error_text),
             )
         }
 
@@ -233,23 +233,23 @@ private fun FavoriteImageItem(
     }
 }
 
-private class FavoriteViewPreviewProvider : PreviewParameterProvider<FavoritesViewState> {
-    override val values: Sequence<FavoritesViewState> =
+private class FavoritesListViewPreviewProvider : PreviewParameterProvider<FavoritesListViewState> {
+    override val values: Sequence<FavoritesListViewState> =
         sequenceOf(
             // Loading.
-            FavoritesViewState(
+            FavoritesListViewState(
                 isLoadingVisible = true,
                 isErrorVisible = false,
                 imageModels = emptyList(),
             ),
             // Error.
-            FavoritesViewState(
+            FavoritesListViewState(
                 isLoadingVisible = false,
                 isErrorVisible = true,
                 imageModels = emptyList(),
             ),
             // Success.
-            FavoritesViewState(
+            FavoritesListViewState(
                 isLoadingVisible = false,
                 isErrorVisible = false,
                 imageModels =
@@ -273,7 +273,7 @@ private class FavoriteViewPreviewProvider : PreviewParameterProvider<FavoritesVi
 
 @Preview
 @Composable
-private fun FavoritesViewPreview(@PreviewParameter(FavoriteViewPreviewProvider::class) viewState: FavoritesViewState) {
+private fun FavoritesListViewPreview(@PreviewParameter(FavoritesListViewPreviewProvider::class) viewState: FavoritesListViewState) {
     CoilPreviewScope(
         colorPreviewMap =
             mapOf(
@@ -283,7 +283,7 @@ private fun FavoritesViewPreview(@PreviewParameter(FavoriteViewPreviewProvider::
             ),
     ) {
         CoffeePicturesPreview {
-            FavoritesView(
+            FavoritesListView(
                 modifier = Modifier.fillMaxSize(),
                 viewState = viewState,
                 onToolbarBackIconClicked = {},

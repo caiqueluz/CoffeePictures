@@ -3,11 +3,11 @@
     <string name="feedback_message_presenter_snackbar_dismiss_action_text">Dismiss</string>
 
     <string name="home_toolbar_title_text">Home</string>
-    <string name="favorites_toolbar_title_text">Favorites</string>
+    <string name="favorites_list_toolbar_title_text">Favorites</string>
 
-    <string name="favorites_error_text">Could not load the favorite images. Sorry! :(</string>
-    <string name="favorites_delete_all_favorites_success_feedback_text">All favorites deleted.</string>
-    <string name="favorites_delete_all_favorites_error_feedback_text">Could not delete the favorites. Sorry! :(</string>
+    <string name="favorites_list_error_text">Could not load the favorite images. Sorry! :(</string>
+    <string name="favorites_list_delete_all_favorites_success_feedback_text">All favorites deleted.</string>
+    <string name="favorites_list_delete_all_favorites_error_feedback_text">Could not delete the favorites. Sorry! :(</string>
 
     <string name="home_load_new_button_text">Load new</string>
     <string name="home_add_to_favorites_button_text">Add to favorites</string>

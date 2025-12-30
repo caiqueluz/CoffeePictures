@@ -5,7 +5,7 @@ import com.example.coffeepictures.feature.api.FavoritesEntrypoint
 import com.example.coffeepictures.feature.api.HomeEntrypoint
 import com.example.coffeepictures.feature.impl.app.AppEntrypointImpl
 import com.example.coffeepictures.feature.impl.favorites.FavoritesEntrypointImpl
-import com.example.coffeepictures.feature.impl.favorites.logic.FavoritesViewModel
+import com.example.coffeepictures.feature.impl.favorites.list.logic.FavoritesListViewModel
 import com.example.coffeepictures.feature.impl.home.HomeEntrypointImpl
 import com.example.coffeepictures.feature.impl.home.logic.HomeViewModel
 import org.koin.core.module.dsl.singleOf
@@ -17,7 +17,7 @@ val featureModule =
     module {
         singleOf(::AppEntrypointImpl).bind<AppEntrypoint>()
 
-        viewModelOf(::FavoritesViewModel)
+        viewModelOf(::FavoritesListViewModel)
         singleOf(::FavoritesEntrypointImpl).bind<FavoritesEntrypoint>()
 
         viewModelOf(::HomeViewModel)
