@@ -53,12 +53,11 @@ fun AppHost(
         val appScreenModel by appScreenNavigator.appScreenFlow.collectAsStateWithLifecycle()
 
         Box(
-            modifier = Modifier.padding(innerPadding),
+            modifier = modifier.padding(innerPadding),
         ) {
             when (appScreenModel) {
                 is Home -> {
                     homeEntrypoint.Content(
-                        modifier = modifier,
                         appScreenNavigator = appScreenNavigator,
                     )
                 }
