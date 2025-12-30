@@ -35,16 +35,36 @@ fun FavoritesView(
     modifier: Modifier = Modifier,
     viewState: FavoritesViewState,
 ) {
+    Column(
+        modifier = modifier,
+    ) {
+        // TODO - add toolbar.
+
+        Content(
+            isLoadingVisible = viewState.isLoadingVisible,
+            isErrorVisible = viewState.isErrorVisible,
+            imageModels = viewState.imageModels,
+        )
+    }
+}
+
+@Composable
+private fun Content(
+    modifier: Modifier = Modifier,
+    isLoadingVisible: Boolean,
+    isErrorVisible: Boolean,
+    imageModels: List<FavoriteImageModel>,
+) {
     Box(
         modifier = modifier.padding(all = DSSpacing.medium),
     ) {
-        if (viewState.isLoadingVisible) {
+        if (isLoadingVisible) {
             LoadingList(
                 modifier = Modifier.fillMaxSize(),
             )
         }
 
-        if (viewState.isErrorVisible) {
+        if (isErrorVisible) {
             DSErrorMessageAlert(
                 modifier = Modifier.fillMaxSize(),
                 text = stringResource(id = R.string.favorites_error_text),
@@ -53,7 +73,7 @@ fun FavoritesView(
 
         List(
             modifier = Modifier.fillMaxSize(),
-            imageModels = viewState.imageModels,
+            imageModels = imageModels,
         )
     }
 }
