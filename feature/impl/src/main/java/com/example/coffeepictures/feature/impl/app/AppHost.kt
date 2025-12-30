@@ -1,7 +1,6 @@
 package com.example.coffeepictures.feature.impl.app
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
@@ -10,7 +9,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.coffeepictures.common.ui.api.FeedbackMessagePresenter
-import com.example.coffeepictures.feature.api.AppToolbarEntrypoint
 import com.example.coffeepictures.feature.api.FavoritesEntrypoint
 import com.example.coffeepictures.feature.api.HomeEntrypoint
 import com.example.coffeepictures.navigator.AppScreenModel.Favorites
@@ -27,7 +25,6 @@ fun AppHost(
     val appScreenNavigator = rememberAppScreenNavigator(initialModel = Home)
     val snackbarHostState = rememberSnackbarHostState()
     val feedbackMessagePresenter = koinInject<FeedbackMessagePresenter>()
-    val appToolbarEntrypoint = koinInject<AppToolbarEntrypoint>()
     val homeEntrypoint = koinInject<HomeEntrypoint>()
     val favoritesEntrypoint = koinInject<FavoritesEntrypoint>()
 
@@ -39,21 +36,16 @@ fun AppHost(
 
     Scaffold(
         modifier = modifier,
-        topBar = {
-            appToolbarEntrypoint.Content(
-                appScreenNavigator = appScreenNavigator,
-            )
-        },
         snackbarHost = {
             SnackbarHost(
                 hostState = snackbarHostState,
             )
         },
-    ) { innerPadding ->
+    ) {
         val appScreenModel by appScreenNavigator.appScreenFlow.collectAsStateWithLifecycle()
 
         Box(
-            modifier = modifier.padding(innerPadding),
+            modifier = modifier,
         ) {
             when (appScreenModel) {
                 is Home -> {
