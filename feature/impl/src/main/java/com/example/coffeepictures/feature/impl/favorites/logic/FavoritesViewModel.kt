@@ -1,15 +1,20 @@
 package com.example.coffeepictures.feature.impl.favorites.logic
 
 import androidx.lifecycle.viewModelScope
+import com.example.coffeepictures.applogic.api.DeleteAllFavoritesTask
 import com.example.coffeepictures.applogic.api.LoadAllFavoriteImagesTask
 import com.example.coffeepictures.applogic.api.ImageModel
+import com.example.coffeepictures.common.ui.api.FeedbackMessagePresenter
+import com.example.coffeepictures.feature.impl.R
 import com.example.coffeepictures.navigator.AppScreenNavigator
 import com.example.coffeepictures.viewmodel.BasicViewModel
 import kotlinx.coroutines.launch
 
 class FavoritesViewModel(
     private val loadAllFavoriteImagesTask: LoadAllFavoriteImagesTask,
+    private val deleteAllFavoritesTask: DeleteAllFavoritesTask,
     private val appScreenNavigator: AppScreenNavigator,
+    private val feedbackMessagePresenter: FeedbackMessagePresenter,
 ) : BasicViewModel<FavoritesViewState>() {
     private var imageModels = listOf<ImageModel>()
     private var errorThrowable: Throwable? = null
@@ -31,11 +36,11 @@ class FavoritesViewModel(
     }
 
     fun onToolbarBackIconClicked() {
-        // TODO - navigate back to home.
+        appScreenNavigator.navigateBackToHome()
     }
 
     fun onToolbarDeleteIconClicked() {
-        // TODO - delete all favorites.
+        deleteAllFavorites()
     }
 
     fun onBackButtonClicked() {
@@ -65,6 +70,24 @@ class FavoritesViewModel(
                 .onFailure { errorThrowable = it }
 
             updateViewState()
+        }
+    }
+
+    private fun deleteAllFavorites() {
+        viewModelScope.launch {
+            deleteAllFavoritesTask()
+                .onSuccess {
+                    loadAllFavoriteImages()
+
+                    feedbackMessagePresenter.show(
+                        textResId = R.string.favorites_delete_all_favorites_success_feedback_text,
+                    )
+                }
+                .onFailure {
+                    feedbackMessagePresenter.show(
+                        textResId = R.string.favorites_delete_all_favorites_error_feedback_text,
+                    )
+                }
         }
     }
 }
