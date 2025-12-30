@@ -3,6 +3,7 @@ package com.example.coffeepictures.feature.impl.home.logic
 import androidx.lifecycle.viewModelScope
 import com.example.coffeepictures.applogic.api.AddImageToFavoritesTask
 import com.example.coffeepictures.applogic.api.GetImageByUrlTask
+import com.example.coffeepictures.applogic.api.GetFavoritesPresenceStatusStreamTask
 import com.example.coffeepictures.applogic.api.LoadRandomImageTask
 import com.example.coffeepictures.applogic.api.ImageModel
 import com.example.coffeepictures.common.ui.api.FeedbackMessagePresenter
@@ -15,15 +16,27 @@ class HomeViewModel(
     private val loadRandomImageTask: LoadRandomImageTask,
     private val getImageByUrlTask: GetImageByUrlTask,
     private val addImageToFavoritesTask: AddImageToFavoritesTask,
+    private val getFavoritesPresenceStatusStreamTask: GetFavoritesPresenceStatusStreamTask,
     private val appScreenNavigator: AppScreenNavigator,
     private val feedbackMessagePresenter: FeedbackMessagePresenter,
 ) : BasicViewModel<HomeViewState>() {
     private var imageModel: ImageModel? = null
+    private var hasFavorites = false
     private var errorThrowable: Throwable? = null
+
+    init {
+        viewModelScope.launch {
+            getFavoritesPresenceStatusStreamTask()
+                .collect {
+                    hasFavorites = it
+                    updateViewState()
+                }
+        }
+    }
 
     override fun createViewState(): HomeViewState {
         return HomeViewState(
-            isToolbarStarIconVisible = true, // TODO.
+            isToolbarStarIconVisible = hasFavorites,
             isLoadingVisible = imageModel == null && errorThrowable == null,
             isErrorVisible = imageModel == null && errorThrowable != null,
             imageUrl =
