@@ -55,8 +55,9 @@ fun FavoritesView(
                 onToolbarDeleteIconClicked = onToolbarDeleteIconClicked,
             )
         },
-    ) {
+    ) { innerPadding ->
         Content(
+            modifier = Modifier.padding(innerPadding),
             isLoadingVisible = viewState.isLoadingVisible,
             isErrorVisible = viewState.isErrorVisible,
             imageModels = viewState.imageModels,

@@ -48,14 +48,15 @@ fun HomeView(
     onAddToFavoritesButtonClicked: () -> Unit,
 ) {
     Scaffold(
+        modifier = modifier,
         topBar = {
             Toolbar(
                 onToolbarStarIconClicked = onToolbarStarIconClicked,
             )
         },
-    ) {
+    ) { innerPadding ->
         Content(
-            modifier = modifier.padding(all = DSSpacing.medium),
+            modifier = Modifier.padding(innerPadding),
             isLoadingVisible = viewState.isLoadingVisible,
             isErrorVisible = viewState.isErrorVisible,
             imageUrl = viewState.imageUrl,
@@ -118,7 +119,7 @@ private fun Content(
     onAddToFavoritesButtonClicked: () -> Unit,
 ) {
     Column(
-        modifier = modifier,
+        modifier = modifier.padding(all = DSSpacing.medium),
     ) {
         ImageSection(
             modifier =
