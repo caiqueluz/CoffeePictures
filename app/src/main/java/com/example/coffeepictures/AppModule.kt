@@ -1,9 +1,7 @@
-package com.example.coffeepictures.app
+package com.example.coffeepictures
 
-import com.example.coffeepictures.AppDependencies
 import com.example.coffeepictures.applogic.di.appLogicModule
 import com.example.coffeepictures.common.ui.di.commonUiModule
-import com.example.coffeepictures.core.compositeModule
 import com.example.coffeepictures.feature.di.featureModule
 import com.example.coffeepictures.infrastructure.database.di.databaseModule
 import com.example.coffeepictures.infrastructure.image.di.imageModule

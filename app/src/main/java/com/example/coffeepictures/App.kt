@@ -1,4 +1,4 @@
-package com.example.coffeepictures.app
+package com.example.coffeepictures
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier

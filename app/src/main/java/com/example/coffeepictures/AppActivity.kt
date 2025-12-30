@@ -7,10 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import coil3.compose.setSingletonImageLoaderFactory
-import com.example.coffeepictures.app.App
-import com.example.coffeepictures.app.appModule
-import com.example.coffeepictures.core.coffeePicturesApplication
-import com.example.coffeepictures.core.setCoffeePicturesContent
 import com.example.coffeepictures.infrastructure.api.CoilImageLoaderFactory
 import org.koin.android.ext.android.get
 import org.koin.android.ext.koin.androidContext
