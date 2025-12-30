@@ -22,6 +22,7 @@ class FavoritesDetailViewModel(
 
     override fun createViewState(): FavoritesDetailViewState {
         return FavoritesDetailViewState(
+            isToolbarDeleteIconVisible = imageModel != null,
             isLoadingVisible = imageModel == null && errorThrowable == null,
             isErrorVisible = imageModel == null && errorThrowable != null,
             imageUrlText =

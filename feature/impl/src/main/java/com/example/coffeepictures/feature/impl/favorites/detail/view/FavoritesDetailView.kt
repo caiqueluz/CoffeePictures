@@ -46,6 +46,7 @@ fun FavoritesDetailView(
         modifier = modifier,
         topBar = {
             Toolbar(
+                isToolbarDeleteIconVisible = viewState.isToolbarDeleteIconVisible,
                 onToolbarBackIconClicked = onToolbarBackIconClicked,
                 onToolbarDeleteIconClicked = onToolbarDeleteIconClicked,
             )
@@ -64,6 +65,7 @@ fun FavoritesDetailView(
 @Composable
 private fun Toolbar(
     modifier: Modifier = Modifier,
+    isToolbarDeleteIconVisible: Boolean,
     onToolbarBackIconClicked: () -> Unit,
     onToolbarDeleteIconClicked: () -> Unit,
 ) {
@@ -81,10 +83,12 @@ private fun Toolbar(
             )
         },
         actions = {
-            DSIconButton(
-                imageVector = Icons.Filled.Delete,
-                onIconClicked = onToolbarDeleteIconClicked,
-            )
+            if (isToolbarDeleteIconVisible) {
+                DSIconButton(
+                    imageVector = Icons.Filled.Delete,
+                    onIconClicked = onToolbarDeleteIconClicked,
+                )
+            }
         },
     )
 }
@@ -217,18 +221,21 @@ private class FavoritesDetailViewPreviewProvider : PreviewParameterProvider<Favo
         sequenceOf(
             // Loading.
             FavoritesDetailViewState(
+                isToolbarDeleteIconVisible = false,
                 isLoadingVisible = true,
                 isErrorVisible = false,
                 imageUrlText = null,
             ),
             // Error.
             FavoritesDetailViewState(
+                isToolbarDeleteIconVisible = false,
                 isLoadingVisible = false,
                 isErrorVisible = true,
                 imageUrlText = null,
             ),
             // Success.
             FavoritesDetailViewState(
+                isToolbarDeleteIconVisible = true,
                 isLoadingVisible = false,
                 isErrorVisible = false,
                 imageUrlText = "example.com/1.png",
