@@ -30,5 +30,7 @@ fun FavoritesHost(
     FavoritesView(
         modifier = modifier.onFirstVisible(callback = viewModel::onFavoritesStarted),
         viewState = viewState,
+        onToolbarBackIconClicked = viewModel::onToolbarBackIconClicked,
+        onToolbarDeleteIconClicked = viewModel::onToolbarDeleteIconClicked,
     )
 }

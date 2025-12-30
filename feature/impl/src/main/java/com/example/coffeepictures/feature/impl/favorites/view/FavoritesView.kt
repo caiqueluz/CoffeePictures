@@ -7,14 +7,24 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
@@ -34,16 +44,68 @@ import com.example.coffeepictures.feature.impl.favorites.logic.FavoritesViewStat
 fun FavoritesView(
     modifier: Modifier = Modifier,
     viewState: FavoritesViewState,
+    onToolbarBackIconClicked: () -> Unit,
+    onToolbarDeleteIconClicked: () -> Unit,
 ) {
-    Column(
+    Scaffold(
         modifier = modifier,
+        topBar = {
+            Toolbar(
+                onToolbarBackIconClicked = onToolbarBackIconClicked,
+                onToolbarDeleteIconClicked = onToolbarDeleteIconClicked,
+            )
+        },
     ) {
-        // TODO - add toolbar.
-
         Content(
             isLoadingVisible = viewState.isLoadingVisible,
             isErrorVisible = viewState.isErrorVisible,
             imageModels = viewState.imageModels,
+        )
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun Toolbar(
+    modifier: Modifier = Modifier,
+    onToolbarBackIconClicked: () -> Unit,
+    onToolbarDeleteIconClicked: () -> Unit,
+) {
+    TopAppBar(
+        modifier = modifier,
+        title = {
+            Text(
+                text = stringResource(id = R.string.favorites_toolbar_title_text),
+            )
+        },
+        navigationIcon = {
+            ToolbarIcon(
+                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                onIconClicked = onToolbarBackIconClicked,
+            )
+        },
+        actions = {
+            ToolbarIcon(
+                imageVector = Icons.Filled.Delete,
+                onIconClicked = onToolbarDeleteIconClicked,
+            )
+        },
+    )
+}
+
+@Composable
+private fun ToolbarIcon(
+    modifier: Modifier = Modifier,
+    imageVector: ImageVector,
+    onIconClicked: () -> Unit,
+) {
+    IconButton(
+        onClick = onIconClicked,
+    ) {
+        Icon(
+            modifier = modifier.size(16.dp),
+            imageVector = imageVector,
+            contentDescription = null,
         )
     }
 }
@@ -223,6 +285,8 @@ private fun FavoritesViewPreview(@PreviewParameter(FavoriteViewPreviewProvider::
             FavoritesView(
                 modifier = Modifier.fillMaxSize(),
                 viewState = viewState,
+                onToolbarBackIconClicked = {},
+                onToolbarDeleteIconClicked = {},
             )
         }
     }

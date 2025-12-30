@@ -30,6 +30,14 @@ class FavoritesViewModel(
         loadAllFavoriteImages()
     }
 
+    fun onToolbarBackIconClicked() {
+        // TODO - navigate back to home.
+    }
+
+    fun onToolbarDeleteIconClicked() {
+        // TODO - delete all favorites.
+    }
+
     fun onBackButtonClicked() {
         appScreenNavigator.navigateBackToHome()
     }
