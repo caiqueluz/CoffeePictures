@@ -77,11 +77,11 @@ class FavoritesViewModel(
         viewModelScope.launch {
             deleteAllFavoritesTask()
                 .onSuccess {
-                    loadAllFavoriteImages()
-
                     feedbackMessagePresenter.show(
                         textResId = R.string.favorites_delete_all_favorites_success_feedback_text,
                     )
+
+                    appScreenNavigator.navigateBackToHome()
                 }
                 .onFailure {
                     feedbackMessagePresenter.show(
