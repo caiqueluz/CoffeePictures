@@ -5,6 +5,7 @@ import com.example.coffeepictures.feature.api.FavoritesEntrypoint
 import com.example.coffeepictures.feature.api.HomeEntrypoint
 import com.example.coffeepictures.feature.impl.app.AppEntrypointImpl
 import com.example.coffeepictures.feature.impl.favorites.FavoritesEntrypointImpl
+import com.example.coffeepictures.feature.impl.favorites.detail.logic.FavoritesDetailViewModel
 import com.example.coffeepictures.feature.impl.favorites.list.logic.FavoritesListViewModel
 import com.example.coffeepictures.feature.impl.home.HomeEntrypointImpl
 import com.example.coffeepictures.feature.impl.home.logic.HomeViewModel
@@ -18,6 +19,7 @@ val featureModule =
         singleOf(::AppEntrypointImpl).bind<AppEntrypoint>()
 
         viewModelOf(::FavoritesListViewModel)
+        viewModelOf(::FavoritesDetailViewModel)
         singleOf(::FavoritesEntrypointImpl).bind<FavoritesEntrypoint>()
 
         viewModelOf(::HomeViewModel)
