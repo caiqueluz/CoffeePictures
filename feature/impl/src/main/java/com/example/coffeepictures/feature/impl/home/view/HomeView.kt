@@ -36,17 +36,42 @@ fun HomeView(
     onLoadNewButtonClicked: () -> Unit,
     onAddToFavoritesButtonClicked: () -> Unit,
 ) {
-    Column(
+    // TODO - add toobar.
+
+    Content(
         modifier = modifier.padding(all = DSSpacing.medium),
+        isLoadingVisible = viewState.isLoadingVisible,
+        isErrorVisible = viewState.isErrorVisible,
+        imageUrl = viewState.imageUrl,
+        isLoadNewButtonEnabled = viewState.isLoadNewButtonEnabled,
+        isAddToFavoritesButtonEnabled = viewState.isAddToFavoritesButtonEnabled,
+        onLoadNewButtonClicked = onLoadNewButtonClicked,
+        onAddToFavoritesButtonClicked = onAddToFavoritesButtonClicked,
+    )
+}
+
+@Composable
+private fun Content(
+    modifier: Modifier = Modifier,
+    isLoadingVisible: Boolean,
+    isErrorVisible: Boolean,
+    imageUrl: String?,
+    isLoadNewButtonEnabled: Boolean,
+    isAddToFavoritesButtonEnabled: Boolean,
+    onLoadNewButtonClicked: () -> Unit,
+    onAddToFavoritesButtonClicked: () -> Unit,
+) {
+    Column(
+        modifier = modifier,
     ) {
         ImageSection(
             modifier =
                 Modifier
                     .fillMaxWidth()
                     .height(300.dp),
-            isLoadingVisible = viewState.isLoadingVisible,
-            isErrorVisible = viewState.isErrorVisible,
-            imageUrl = viewState.imageUrl,
+            isLoadingVisible = isLoadingVisible,
+            isErrorVisible = isErrorVisible,
+            imageUrl = imageUrl,
         )
 
         Spacer(
@@ -59,8 +84,8 @@ fun HomeView(
 
         ButtonSection(
             modifier = Modifier.fillMaxWidth(),
-            isLoadNewButtonEnabled = viewState.isLoadNewButtonEnabled,
-            isAddToFavoritesButtonEnabled = viewState.isAddToFavoritesButtonEnabled,
+            isLoadNewButtonEnabled = isLoadNewButtonEnabled,
+            isAddToFavoritesButtonEnabled = isAddToFavoritesButtonEnabled,
             onLoadNewButtonClicked = onLoadNewButtonClicked,
             onAddToFavoritesButtonClicked = onAddToFavoritesButtonClicked,
         )
