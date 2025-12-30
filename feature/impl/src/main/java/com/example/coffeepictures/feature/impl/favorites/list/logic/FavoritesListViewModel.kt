@@ -49,6 +49,11 @@ class FavoritesListViewModel(
         appScreenNavigator.navigateBackToHome()
     }
 
+    fun onItemClicked(index: Int) {
+        val itemModel = imageModels[index]
+        favoritesScreenNavigator.navigateToDetail(imageUrl = itemModel.url)
+    }
+
     private fun createFavoriteImageModel(imageModel: ImageModel): FavoriteImageModel {
         return FavoriteImageModel(
             /**

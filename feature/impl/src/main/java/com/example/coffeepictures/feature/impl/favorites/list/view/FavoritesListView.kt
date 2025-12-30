@@ -1,5 +1,6 @@
 package com.example.coffeepictures.feature.impl.favorites.list.view
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -43,6 +44,7 @@ fun FavoritesListView(
     viewState: FavoritesListViewState,
     onToolbarBackIconClicked: () -> Unit,
     onToolbarDeleteIconClicked: () -> Unit,
+    onItemClicked: (Int) -> Unit,
 ) {
     Scaffold(
         modifier = modifier,
@@ -58,6 +60,7 @@ fun FavoritesListView(
             isLoadingVisible = viewState.isLoadingVisible,
             isErrorVisible = viewState.isErrorVisible,
             imageModels = viewState.imageModels,
+            onItemClicked = onItemClicked,
         )
     }
 }
@@ -97,6 +100,7 @@ private fun Content(
     isLoadingVisible: Boolean,
     isErrorVisible: Boolean,
     imageModels: List<FavoriteImageModel>,
+    onItemClicked: (Int) -> Unit,
 ) {
     Box(
         modifier = modifier.padding(all = DSSpacing.medium),
@@ -117,6 +121,7 @@ private fun Content(
         List(
             modifier = Modifier.fillMaxSize(),
             imageModels = imageModels,
+            onItemClicked = onItemClicked,
         )
     }
 }
@@ -172,12 +177,17 @@ private fun LoadingItem(
 private fun List(
     modifier: Modifier = Modifier,
     imageModels: List<FavoriteImageModel>,
+    onItemClicked: (Int) -> Unit,
 ) {
     LazyColumn(
         modifier = modifier,
     ) {
         itemsIndexed(imageModels) { index, model ->
             FavoriteImageItem(
+                modifier =
+                    Modifier.clickable {
+                        onItemClicked(index)
+                    },
                 model = model,
             )
 
@@ -268,6 +278,7 @@ private fun FavoritesListViewPreview(@PreviewParameter(FavoritesListViewPreviewP
                 viewState = viewState,
                 onToolbarBackIconClicked = {},
                 onToolbarDeleteIconClicked = {},
+                onItemClicked = {},
             )
         }
     }

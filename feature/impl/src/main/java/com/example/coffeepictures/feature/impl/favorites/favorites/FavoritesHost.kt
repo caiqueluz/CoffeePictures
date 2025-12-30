@@ -27,12 +27,14 @@ fun FavoritesHost(
             is Detail -> {
                 FavoritesDetailHost(
                     imageUrl = model.imageUrl,
+                    favoritesScreenNavigator = favoritesScreenNavigator,
                 )
             }
 
             is List -> {
                 FavoritesListHost(
                     appScreenNavigator = appScreenNavigator,
+                    favoritesScreenNavigator = favoritesScreenNavigator,
                 )
             }
         }

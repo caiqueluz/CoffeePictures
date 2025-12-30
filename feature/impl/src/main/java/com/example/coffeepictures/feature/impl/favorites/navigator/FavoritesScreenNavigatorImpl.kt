@@ -11,7 +11,7 @@ class FavoritesScreenNavigatorImpl : FavoritesScreenNavigator {
     override val favoritesScreenFlow = mutableFavoritesScreenFlow.asStateFlow()
 
     override fun navigateToDetail(imageUrl: String) {
-        val model = Detail( imageUrl)
+        val model = Detail(imageUrl)
         navigateTo(model)
     }
 

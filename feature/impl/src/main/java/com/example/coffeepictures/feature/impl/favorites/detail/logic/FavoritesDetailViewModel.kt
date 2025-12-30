@@ -3,11 +3,13 @@ package com.example.coffeepictures.feature.impl.favorites.detail.logic
 import androidx.lifecycle.viewModelScope
 import com.example.coffeepictures.applogic.api.GetImageByUrlTask
 import com.example.coffeepictures.applogic.api.ImageModel
+import com.example.coffeepictures.feature.impl.favorites.navigator.FavoritesScreenNavigator
 import com.example.coffeepictures.viewmodel.BasicViewModel
 import kotlinx.coroutines.launch
 
 class FavoritesDetailViewModel(
     private val getImageByUrlTask: GetImageByUrlTask,
+    private val favoritesScreenNavigator: FavoritesScreenNavigator,
 ) : BasicViewModel<FavoritesDetailViewState>() {
     private lateinit var imageUrl: String
     private var imageModel: ImageModel? = null
@@ -30,7 +32,7 @@ class FavoritesDetailViewModel(
     }
 
     fun onToolbarBackIconClicked() {
-        // TODO - navigate back to favorites.
+        favoritesScreenNavigator.navigateBackToList()
     }
 
     fun onToolbarDeleteIconClicked() {
@@ -45,7 +47,7 @@ class FavoritesDetailViewModel(
 
         viewModelScope.launch {
             getImageByUrlTask(imageUrl)
-                .onSuccess { imageModel = null }
+                .onSuccess { imageModel = it }
                 .onFailure { errorThrowable = it }
 
             updateViewState()
