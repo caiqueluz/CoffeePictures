@@ -12,6 +12,8 @@
 
     <string name="favorites_detail_error_text">Could not load the favorite image. Sorry! :(</string>
     <string name="favorites_detail_image_url_label_text">Image url</string>
+    <string name="favorites_detail_delete_favorite_success_feedback_text">Favorite image deleted.</string>
+    <string name="favorites_detail_delete_favorite_error_feedback_text">Could not delete the favorite. Sorry! :(</string>
 
     <string name="home_load_new_button_text">Load new</string>
     <string name="home_add_to_favorites_button_text">Add to favorites</string>
