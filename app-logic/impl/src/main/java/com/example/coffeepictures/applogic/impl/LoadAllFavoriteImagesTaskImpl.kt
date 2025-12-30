@@ -1,7 +1,7 @@
 package com.example.coffeepictures.applogic.impl
 
-import com.example.coffeepictures.applogic.api.LoadAllFavoriteImagesTask
 import com.example.coffeepictures.applogic.api.ImageModel
+import com.example.coffeepictures.applogic.api.LoadAllFavoriteImagesTask
 import com.example.coffeepictures.infrastructure.database.api.ImagesDao
 
 class LoadAllFavoriteImagesTaskImpl(
