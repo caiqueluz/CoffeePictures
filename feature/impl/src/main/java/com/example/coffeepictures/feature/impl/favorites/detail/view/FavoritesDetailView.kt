@@ -10,12 +10,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,8 +26,10 @@ import coil3.compose.AsyncImage
 import com.example.coffeepictures.designsystem.CoffeePicturesPreview
 import com.example.coffeepictures.designsystem.CoilPreviewScope
 import com.example.coffeepictures.designsystem.component.DSErrorMessageAlert
-import com.example.coffeepictures.designsystem.component.DSIconButton
 import com.example.coffeepictures.designsystem.component.DSLoading
+import com.example.coffeepictures.designsystem.component.toolbar.DSToolbar
+import com.example.coffeepictures.designsystem.component.toolbar.DSToolbarIcon
+import com.example.coffeepictures.designsystem.component.toolbar.DSToolbarNavigationIcon
 import com.example.coffeepictures.designsystem.core.DSSpacing
 import com.example.coffeepictures.feature.impl.R
 import com.example.coffeepictures.feature.impl.favorites.detail.logic.FavoritesDetailViewState
@@ -45,10 +44,18 @@ fun FavoritesDetailView(
     Scaffold(
         modifier = modifier,
         topBar = {
-            Toolbar(
-                isToolbarDeleteIconVisible = viewState.isToolbarDeleteIconVisible,
-                onToolbarBackIconClicked = onToolbarBackIconClicked,
-                onToolbarDeleteIconClicked = onToolbarDeleteIconClicked,
+            DSToolbar(
+                titleText = stringResource(id = R.string.favorites_detail_toolbar_title_text),
+                navigationIcon = DSToolbarNavigationIcon.Back(onIconClicked = onToolbarBackIconClicked),
+                actionIcons =
+                    setOfNotNull(
+                        DSToolbarIcon
+                            .Model(
+                                imageVector = Icons.Filled.Delete,
+                                onIconClicked = onToolbarDeleteIconClicked,
+                            )
+                            .takeIf { viewState.isToolbarDeleteIconVisible },
+                    ),
             )
         },
     ) { innerPadding ->
@@ -59,38 +66,6 @@ fun FavoritesDetailView(
             imageModel = viewState.imageUrlText,
         )
     }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun Toolbar(
-    modifier: Modifier = Modifier,
-    isToolbarDeleteIconVisible: Boolean,
-    onToolbarBackIconClicked: () -> Unit,
-    onToolbarDeleteIconClicked: () -> Unit,
-) {
-    TopAppBar(
-        modifier = modifier,
-        title = {
-            Text(
-                text = stringResource(id = R.string.favorites_detail_toolbar_title_text),
-            )
-        },
-        navigationIcon = {
-            DSIconButton(
-                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                onIconClicked = onToolbarBackIconClicked,
-            )
-        },
-        actions = {
-            if (isToolbarDeleteIconVisible) {
-                DSIconButton(
-                    imageVector = Icons.Filled.Delete,
-                    onIconClicked = onToolbarDeleteIconClicked,
-                )
-            }
-        },
-    )
 }
 
 @Composable

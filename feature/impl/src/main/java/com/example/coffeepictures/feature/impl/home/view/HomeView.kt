@@ -11,10 +11,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,8 +27,9 @@ import com.example.coffeepictures.designsystem.CoffeePicturesPreview
 import com.example.coffeepictures.designsystem.CoilPreviewScope
 import com.example.coffeepictures.designsystem.component.DSButton
 import com.example.coffeepictures.designsystem.component.DSErrorMessageAlert
-import com.example.coffeepictures.designsystem.component.DSIconButton
 import com.example.coffeepictures.designsystem.component.DSLoading
+import com.example.coffeepictures.designsystem.component.toolbar.DSToolbar
+import com.example.coffeepictures.designsystem.component.toolbar.DSToolbarIcon
 import com.example.coffeepictures.designsystem.core.DSSpacing
 import com.example.coffeepictures.feature.impl.R
 import com.example.coffeepictures.feature.impl.home.logic.HomeViewState
@@ -47,9 +45,18 @@ fun HomeView(
     Scaffold(
         modifier = modifier,
         topBar = {
-            Toolbar(
-                isStarIconVisible = viewState.isToolbarStarIconVisible,
-                onToolbarStarIconClicked = onToolbarStarIconClicked,
+            DSToolbar(
+                titleText = stringResource(id = R.string.home_toolbar_title_text),
+                navigationIcon = null,
+                actionIcons =
+                    setOfNotNull(
+                        DSToolbarIcon
+                            .Model(
+                                imageVector = Icons.Filled.Star,
+                                onIconClicked = onToolbarStarIconClicked,
+                            )
+                            .takeIf { viewState.isToolbarStarIconVisible },
+                    ),
             )
         },
     ) { innerPadding ->
@@ -64,31 +71,6 @@ fun HomeView(
             onAddToFavoritesButtonClicked = onAddToFavoritesButtonClicked,
         )
     }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun Toolbar(
-    modifier: Modifier = Modifier,
-    isStarIconVisible: Boolean,
-    onToolbarStarIconClicked: () -> Unit,
-) {
-    TopAppBar(
-        modifier = modifier,
-        title = {
-            Text(
-                text = stringResource(id = R.string.home_toolbar_title_text),
-            )
-        },
-        actions = {
-            if (isStarIconVisible) {
-                DSIconButton(
-                    imageVector = Icons.Filled.Star,
-                    onIconClicked = onToolbarStarIconClicked,
-                )
-            }
-        },
-    )
 }
 
 @Composable
