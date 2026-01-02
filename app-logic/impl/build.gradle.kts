@@ -33,6 +33,7 @@ android {
 dependencies {
     implementation(project(":app-logic:api"))
     implementation(project(":infrastructure:database:api"))
+    implementation(project(":infrastructure:network:api"))
 
     implementation(platform(libs.okHttp.bom))
 

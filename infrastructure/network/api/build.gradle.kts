@@ -15,5 +15,6 @@ kotlin {
         implementation(platform(libs.okHttp.bom))
 
         implementation(libs.okHttp.core)
+        implementation(libs.retrofit)
     }
 }

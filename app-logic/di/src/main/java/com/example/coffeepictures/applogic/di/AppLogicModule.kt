@@ -12,7 +12,6 @@ import com.example.coffeepictures.applogic.impl.DeleteAllFavoritesTaskImpl
 import com.example.coffeepictures.applogic.impl.DeleteFavoriteByUrlTaskImpl
 import com.example.coffeepictures.applogic.impl.GetFavoritesPresenceStatusStreamTaskImpl
 import com.example.coffeepictures.applogic.impl.GetImageByUrlTaskImpl
-import com.example.coffeepictures.applogic.impl.ImagesHttpClient
 import com.example.coffeepictures.applogic.impl.ImagesRetrofitClient
 import com.example.coffeepictures.applogic.impl.LoadAllFavoriteImagesTaskImpl
 import com.example.coffeepictures.applogic.impl.LoadRandomImageTaskImpl
@@ -28,7 +27,6 @@ val appLogicModule =
                 .create(ImagesRetrofitClient::class)
         }
 
-        factoryOf(::ImagesHttpClient)
         factoryOf(::LoadAllFavoriteImagesTaskImpl).bind<LoadAllFavoriteImagesTask>()
         factoryOf(::LoadRandomImageTaskImpl).bind<LoadRandomImageTask>()
         factoryOf(::AddImageToFavoritesTaskImpl).bind<AddImageToFavoritesTask>()
