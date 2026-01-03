@@ -1,7 +1,7 @@
 package com.example.coffeepictures.common.ui.impl
 
 import androidx.annotation.StringRes
-import com.example.coffeepictures.common.ui.api.FeedbackMessagePresenter
+import com.example.coffeepictures.commonui.api.FeedbackMessagePresenter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch

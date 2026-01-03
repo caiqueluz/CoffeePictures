@@ -1,6 +1,6 @@
 package com.example.coffeepictures.common.ui.di
 
-import com.example.coffeepictures.common.ui.api.FeedbackMessagePresenter
+import com.example.coffeepictures.commonui.api.FeedbackMessagePresenter
 import com.example.coffeepictures.common.ui.impl.FeedbackMessagePresenterImpl
 import kotlinx.coroutines.CoroutineScope
 import org.koin.core.module.dsl.singleOf

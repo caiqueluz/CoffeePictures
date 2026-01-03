@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.coffeepictures.common.ui.api.FeedbackMessagePresenter
+import com.example.coffeepictures.commonui.api.FeedbackMessagePresenter
 import com.example.coffeepictures.feature.api.FavoritesEntrypoint
 import com.example.coffeepictures.feature.api.HomeEntrypoint
 import com.example.coffeepictures.navigator.AppScreenModel.Favorites

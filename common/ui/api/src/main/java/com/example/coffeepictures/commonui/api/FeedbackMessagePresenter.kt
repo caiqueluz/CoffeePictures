@@ -1,4 +1,4 @@
-package com.example.coffeepictures.common.ui.api
+package com.example.coffeepictures.commonui.api
 
 import androidx.annotation.StringRes
 import kotlinx.coroutines.channels.ReceiveChannel

@@ -4,7 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.coffeepictures.applogic.api.DeleteFavoriteByUrlTask
 import com.example.coffeepictures.applogic.api.GetImageByUrlTask
 import com.example.coffeepictures.applogic.api.ImageModel
-import com.example.coffeepictures.common.ui.api.FeedbackMessagePresenter
+import com.example.coffeepictures.commonui.api.FeedbackMessagePresenter
 import com.example.coffeepictures.feature.impl.R
 import com.example.coffeepictures.feature.impl.favorites.navigator.FavoritesScreenNavigator
 import com.example.coffeepictures.viewmodel.BasicViewModel

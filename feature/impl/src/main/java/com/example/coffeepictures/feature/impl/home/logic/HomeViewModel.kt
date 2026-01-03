@@ -6,7 +6,7 @@ import com.example.coffeepictures.applogic.api.GetImageByUrlTask
 import com.example.coffeepictures.applogic.api.GetFavoritesPresenceStatusStreamTask
 import com.example.coffeepictures.applogic.api.LoadRandomImageTask
 import com.example.coffeepictures.applogic.api.ImageModel
-import com.example.coffeepictures.common.ui.api.FeedbackMessagePresenter
+import com.example.coffeepictures.commonui.api.FeedbackMessagePresenter
 import com.example.coffeepictures.feature.impl.R
 import com.example.coffeepictures.navigator.AppScreenNavigator
 import com.example.coffeepictures.viewmodel.BasicViewModel
