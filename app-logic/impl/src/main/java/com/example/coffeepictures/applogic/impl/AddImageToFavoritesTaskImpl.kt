@@ -8,7 +8,7 @@ class AddImageToFavoritesTaskImpl(
     private val imagesDao: ImagesDao,
 ) : AddImageToFavoritesTask {
     override suspend operator fun invoke(imageUrl: String): Result<Unit> {
-        return try {
+        return runCatching {
             val entity =
                 ImageEntity(
                     url = imageUrl,
@@ -16,10 +16,6 @@ class AddImageToFavoritesTaskImpl(
                 )
 
             imagesDao.insert(entity)
-
-            Result.success(Unit)
-        } catch (exception: Exception) {
-            Result.failure(exception)
         }
     }
 }

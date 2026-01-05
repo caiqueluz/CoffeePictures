@@ -8,23 +8,18 @@ class LoadAllFavoriteImagesTaskImpl(
     private val imagesDao: ImagesDao,
 ) : LoadAllFavoriteImagesTask {
     override suspend operator fun invoke(): Result<List<ImageModel>> {
-        return try {
-            val imageModels =
-                imagesDao
-                    .getAllImages()
-                    .ifEmpty {
-                        throw Throwable("No random images found.")
-                    }
-                    .map { entity ->
-                        ImageModel(
-                            url = entity.url,
-                            isFavorite = entity.isFavorite,
-                        )
-                    }
-
-            Result.success(value = imageModels)
-        } catch (throwable: Throwable) {
-            Result.failure(throwable)
+        return runCatching {
+            imagesDao
+                .getAllImages()
+                .ifEmpty {
+                    throw Throwable("No random images found.")
+                }
+                .map { entity ->
+                    ImageModel(
+                        url = entity.url,
+                        isFavorite = entity.isFavorite,
+                    )
+                }
         }
     }
 }
