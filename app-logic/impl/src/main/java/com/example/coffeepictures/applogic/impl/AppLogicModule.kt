@@ -1,4 +1,4 @@
-package com.example.coffeepictures.applogic.di
+package com.example.coffeepictures.applogic.impl
 
 import com.example.coffeepictures.applogic.api.AddImageToFavoritesTask
 import com.example.coffeepictures.applogic.api.DeleteAllFavoritesTask
@@ -7,14 +7,6 @@ import com.example.coffeepictures.applogic.api.GetFavoritesPresenceStatusStreamT
 import com.example.coffeepictures.applogic.api.GetImageByUrlTask
 import com.example.coffeepictures.applogic.api.LoadAllFavoriteImagesTask
 import com.example.coffeepictures.applogic.api.LoadRandomImageTask
-import com.example.coffeepictures.applogic.impl.AddImageToFavoritesTaskImpl
-import com.example.coffeepictures.applogic.impl.DeleteAllFavoritesTaskImpl
-import com.example.coffeepictures.applogic.impl.DeleteFavoriteByUrlTaskImpl
-import com.example.coffeepictures.applogic.impl.GetFavoritesPresenceStatusStreamTaskImpl
-import com.example.coffeepictures.applogic.impl.GetImageByUrlTaskImpl
-import com.example.coffeepictures.applogic.impl.ImagesRetrofitClient
-import com.example.coffeepictures.applogic.impl.LoadAllFavoriteImagesTaskImpl
-import com.example.coffeepictures.applogic.impl.LoadRandomImageTaskImpl
 import com.example.coffeepictures.infrastructure.network.api.RetrofitHttpClientFactory
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.bind

@@ -31,7 +31,9 @@ dependencies {
     implementation(project(":common:ui:api"))
 
     implementation(platform(libs.androidx.compose.bom))
+    implementation(platform(libs.koin.bom))
 
+    implementation(libs.koin.core)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.compose.ui)

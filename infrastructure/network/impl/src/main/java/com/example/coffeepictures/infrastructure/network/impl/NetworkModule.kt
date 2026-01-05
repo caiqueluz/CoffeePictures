@@ -1,9 +1,7 @@
-package com.example.coffeepictures.infrastructure.network.di
+package com.example.coffeepictures.infrastructure.network.impl
 
 import com.example.coffeepictures.infrastructure.network.api.OkHttpClientFactory
 import com.example.coffeepictures.infrastructure.network.api.RetrofitHttpClientFactory
-import com.example.coffeepictures.infrastructure.network.impl.OkHttpClientFactoryImpl
-import com.example.coffeepictures.infrastructure.network.impl.RetrofitHttpClientFactoryImpl
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.bind
 import org.koin.dsl.module

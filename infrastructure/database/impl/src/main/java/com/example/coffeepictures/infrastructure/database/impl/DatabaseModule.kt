@@ -1,10 +1,6 @@
-package com.example.coffeepictures.infrastructure.database.di
+package com.example.coffeepictures.infrastructure.database.impl
 
 import com.example.coffeepictures.infrastructure.database.api.ImagesDao
-import com.example.coffeepictures.infrastructure.database.impl.AppDatabase
-import com.example.coffeepictures.infrastructure.database.impl.AppDatabaseProvider
-import com.example.coffeepictures.infrastructure.database.impl.RoomDatabaseBuilderFactory
-import com.example.coffeepictures.infrastructure.database.impl.RoomDatabaseBuilderFactoryImpl
 import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.bind

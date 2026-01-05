@@ -27,7 +27,9 @@ dependencies {
     implementation(project(":infrastructure:database:api"))
 
     ksp(libs.room.compiler)
+    implementation(platform(libs.koin.bom))
 
+    implementation(libs.koin.core)
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
 

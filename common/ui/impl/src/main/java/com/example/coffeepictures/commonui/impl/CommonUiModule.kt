@@ -1,4 +1,4 @@
-package com.example.coffeepictures.common.ui.di
+package com.example.coffeepictures.commonui.impl
 
 import com.example.coffeepictures.commonui.api.FeedbackMessagePresenter
 import com.example.coffeepictures.common.ui.impl.FeedbackMessagePresenterImpl

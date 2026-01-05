@@ -1,7 +1,6 @@
-package com.example.coffeepictures.infrastructure.image.di
+package com.example.coffeepictures.infrastructure.impl
 
 import com.example.coffeepictures.infrastructure.api.CoilImageLoaderFactory
-import com.example.coffeepictures.infrastructure.impl.CoilImageLoaderFactoryImpl
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.bind
 import org.koin.dsl.module

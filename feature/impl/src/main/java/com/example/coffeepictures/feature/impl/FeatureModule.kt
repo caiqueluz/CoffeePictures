@@ -1,4 +1,4 @@
-package com.example.coffeepictures.feature.di
+package com.example.coffeepictures.feature.impl
 
 import com.example.coffeepictures.feature.api.AppEntrypoint
 import com.example.coffeepictures.feature.api.FavoritesEntrypoint
